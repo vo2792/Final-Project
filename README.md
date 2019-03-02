@@ -1,29 +1,29 @@
-# An initial proposal of final project.
+# An Initial Proposal of Final Project.
 
 ## Project Description
 
-We will be working with APIs that specify the worldwide location of Starbucks [Starbucks Location Worldwide](https://www.kaggle.com/starbucks/store-locations#directory.csv) and the nutrition facts for Starbucks's menu [Nutrition Fact for Starbucks Menu](https://www.kaggle.com/starbucks/starbucks-menu). We obtain both datasets from [**kaggle.com**](https://www.kaggle.com/). Our main target audience will be coffee lovers around the world. We serve to provide a few informations that we find important to address:
+We will be working with `.csv` files and **APIs** that contain information about the **[Worldwide Locations of Starbucks](https://www.kaggle.com/starbucks/store-locations#directory.csv)** and the **[Nutrition Facts](https://www.kaggle.com/starbucks/starbucks-menu)** for each Starbucks' drink menu item. We obtained both datasets from [kaggle.com](https://www.kaggle.com/). Our **main target audience** will be **coffee connoisseurs** around the world. Our objective is to provide a some specified information that we find important to address:
 
-> The highest and lowest calories drinks of Starbucks
+> The **highest** and **lowest** calorie drinks from Starbucks' menu.
 
-> How many Starbucks locations are in the world
+> The **total number** of Starbucks franchises in the world.
 
-> What country has the most Starbucks in the world
+> What country has the **most** Starbucks chains in the world.
 
 ## Technical Description
 
-We will be using .csv files for the datasets. For the presentation of data, we will be doing an _interactive map_ (leaflet), a _bar graph_ (ggplot2), and the _whole structure_ will be based on Shiny.
+We will be using `.csv` files for the datasets (that's what we've found so far). For the presentation of data, we will be producing an **_interactive map_** (leaflet), **_bar graph(s)_** (ggplot2), and the _entire structure_ will be represented on a _Shiny Application_.
 
-Initial setup for libraries:
+Initial setup for libraries (for now):
 
-```
-- library(leaflet)
-- library(Shiny)
-- library(ggplot2)
-```
 
-Some major challenges that we anticipate are debugging, debugging and debugging... Also, we expect facing some obstacles in merging multiple files.
+- `leaflet`
+- `shiny`
+- `ggplot2`
 
-We might challenge ourselves by applying machine learning techniques in this final project.
+
+Some **major challenges** that we anticipate are **debugging** and the process of **merging multiple files**.
+
+We may challenge ourselves by applying machine learning techniques in this final project.
 
 Best of luck!
