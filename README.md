@@ -10,6 +10,7 @@ We will be working with `.csv` files and **APIs** that contain information about
 
 > What country has the **most** Starbucks chains in the world.
 
+> The mean calories of a particular Starbucks drink (proposed by TA)
 ## Technical Description
 
 We will be using `.csv` files for the datasets (that's what we've found so far). For the presentation of data, we will be producing an **_interactive map_** (leaflet), **_bar graph(s)_** (ggplot2), and the _entire structure_ will be represented on a _Shiny Application_.
