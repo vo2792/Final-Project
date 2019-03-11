@@ -2,6 +2,16 @@ library(shiny)
 library(leaflet)
 
 source("prepare_map.R")
+source("prepare_table.R")
+
+# introduction
+intro <- tabPanel(
+  "Introduction",
+  fluidPage(
+    h1("The Starbucks Project"),
+    
+  )
+)
 
 # first page
 tab_one <- tabPanel(
@@ -40,26 +50,35 @@ tab_one <- tabPanel(
   )
 )
 
-# # second page
-# tab_two <- tabPanel(
-#   # tab naming
-#   
-#   # title of tab
-#   titlePanel(),
-#   
-#   # sidebar layout
-#   sidebarLayout(
-#     # sidebar panel
-#     sidebarPanel(
-#       # inputs that we would like to implement (eg. selectInput, sliderInput)
-#     ),
-#     # give a name to be passed to the server(output)
-#     mainPanel(
-#       # plotlyOutput("name")
-#     )
-#   )
-# )
-# 
+# second page
+tab_two <- tabPanel(
+# tab naming
+  "Nutrition Facts",
+# title of tab
+  titlePanel("Nutritional Facts Chart"),
+# sidebar layout
+  sidebarLayout(
+     # sidebar panel
+    sidebarPanel(
+      selectInput(
+        inputId = "drink",
+        label = "Drink Category",
+        choices = types,
+        selected = types[1]
+      ),
+      checkboxGroupInput(
+        inputId = "filter",
+        label = "Filter:",
+        choices = colnames(menu)[4:18],
+        selected = colnames(menu)[4:18]
+      )
+    ),
+    mainPanel(
+      dataTableOutput("table")
+    )
+  )
+)
+ 
 # # third page
 # tab_three <- tabPanel(
 #   # tab naming
@@ -83,12 +102,16 @@ tab_one <- tabPanel(
 # Final Project Shiny structure
 shinyUI(navbarPage(
   strong("Starbucks"),
+  # introduction
+  intro,
+  
   # first tab
-  tab_one
+  tab_one,
   
   # second tab
-  # tab_two,
+  tab_two
   
   # third tab
   # tab_three
 ))
+

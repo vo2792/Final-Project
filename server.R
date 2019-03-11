@@ -4,6 +4,7 @@ library(leaflet)
 library(shiny)
 
 source("prepare_map.R")
+source("prepare_table.R")
 
 shinyServer(function(input, output) {
   # render the first object defined in tab_one
@@ -34,6 +35,21 @@ shinyServer(function(input, output) {
   # render the second object defined in tab two
   ## todo:
   ## output$SOME_NAME_TWO <-
+  filtered2 <- reactive({
+    ifelse(
+      input$drink == "All", 
+      menu,
+      menu %>% 
+        filter(Beverage_Category == input$drink) %>% 
+        select(-Beverage_Category)
+    )
+    menu %>% 
+      select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+  })
+  
+  output$table <- renderDataTable({
+    filtered2()
+  })
   
   # render the third object defined in tab three
   ## todo:
