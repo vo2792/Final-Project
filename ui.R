@@ -18,6 +18,16 @@ tab_one <- tabPanel(
         label = "Find a Country",
         choices = select_values,
         selected = "United States Of America"
+      ),
+      
+      checkboxGroupInput(
+        inputId = "check",
+        label = "Ownership Type",
+        choices = list("Licensed" = ownerships[1],
+                       "Joint Venture" = ownerships[2],
+                       "Company Owned" = ownerships[3],
+                       "Franchise" = ownerships[4]),
+        selected = ownerships[1]
       )
     ),
     # give a name to be passed to the server(output)

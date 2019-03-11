@@ -10,12 +10,13 @@ shinyServer(function(input, output) {
   ## todo:
   ## output$SOME_NAME_ONE <-
   filtered <- reactive({
-    directory %>% 
-      filter(country_name == input$search) %>% 
+    directory <- directory[(directory$Ownership.Type %in% input$check), ]
+    directory %>%
+      filter(country_name == input$search) %>%
       mutate(description = paste("City:<b>", City, "</b><br>",
                                  "Store Name:<b>", Store.Name, "</b><br>"))
   })
-  
+
   output$map <- renderLeaflet({
     starbucks_icon <- makeIcon(iconUrl = "starbucks.png",
                                iconWidth = 30,

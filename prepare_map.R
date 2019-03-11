@@ -12,3 +12,15 @@ directory <- directory %>%
 
 # Create discrete values
 select_values <- unique(directory$country_name)
+
+# all types of ownerships
+ownerships <- directory %>%
+  select(Ownership.Type) %>%
+  distinct() %>%
+  pull(Ownership.Type)
+
+# sanity check
+directory %>%
+  filter(Ownership.Type == "Licensed",
+         Country == "US") %>%
+  nrow()
