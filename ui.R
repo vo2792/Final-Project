@@ -30,7 +30,7 @@ tab_one <- tabPanel(
                        "Joint Venture" = ownerships[2],
                        "Company Owned" = ownerships[3],
                        "Franchise" = ownerships[4]),
-        selected = ownerships[1]
+        selected = ownerships
       )
     ),
     # give a name to be passed to the server(output)
