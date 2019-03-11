@@ -1,4 +1,7 @@
 library(shiny)
+library(leaflet)
+
+source("prepare_map.R")
 
 # first page
 tab_one <- tabPanel(
