@@ -14,10 +14,7 @@ directory <- directory %>%
 select_values <- unique(directory$country_name)
 
 # all types of ownerships
-ownerships <- directory %>%
-  select(Ownership.Type) %>%
-  distinct() %>%
-  pull(Ownership.Type)
+ownerships <- unique(directory$Ownership.Type)
 
 # sanity check
 directory %>%
