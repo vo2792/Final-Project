@@ -7,8 +7,14 @@ library(leaflet)
 library(shiny)
 
 directory <- read.csv("data/directory.csv", stringsAsFactors = F)
+abbr <- read.csv("data/wikipedia-iso-country-codes.csv", stringsAsFactors = F) %>% 
+  rename("Country" = "Alpha.2.code",
+         "country_name" = "English.short.name.lower.case")
 
-select_values <- unique(directory$Country)
+directory <- directory %>% 
+  left_join(abbr, by = "Country")
+
+select_values <- unique(directory$country_name)
 
 ui <- tabPanel(
   # tab naming
@@ -26,7 +32,7 @@ ui <- tabPanel(
         inputId = "search",
         label = "Find a Country",
         choices = select_values,
-        selected = "US"
+        selected = "United States Of America"
       )
     ),
     # give a name to be passed to the server(output)
@@ -37,20 +43,24 @@ ui <- tabPanel(
 )
 
 server <- function(input, output) {
+  filtered <- reactive({
+    directory %>% 
+      filter(country_name == input$search) %>% 
+      mutate(description = paste("City:<b>", City, "</b><br>",
+                                 "Store Name:<b>", Store.Name, "</b><br>"))
+    })
+  
   output$map <- renderLeaflet({
-    filtered <- directory %>%
-      filter(Country == input$search)
-    
     starbucks_icon <- makeIcon(iconUrl = "starbucks.png",
                                iconWidth = 30,
                                iconHeight = 30)
     
-    leaflet(data = filtered) %>%
+    leaflet(data = filtered()) %>%
       addTiles() %>%
       addMarkers(lat = ~Latitude, 
                  lng = ~Longitude,
                  icon = starbucks_icon,
-                 label = ~Store.Name,
+                 label = ~lapply(description, HTML),
                  clusterOptions = markerClusterOptions()) 
   })
 }
