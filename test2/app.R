@@ -14,7 +14,6 @@ type <- menu %>%
   group_by(Beverage_Category) %>% 
   count()
 
-
 types <- as.character(type$Beverage_Category)
 types[10] <- "All"
 types <- sort(types)
