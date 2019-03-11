@@ -16,6 +16,8 @@ directory <- directory %>%
 
 select_values <- unique(directory$country_name)
 
+checkbox_values <- unique(directory$Ownership.Type)
+
 ui <- tabPanel(
   # tab naming
   "Map",
@@ -33,6 +35,18 @@ ui <- tabPanel(
         label = "Find a Country",
         choices = select_values,
         selected = "United States Of America"
+      ),
+      
+      checkboxGroupInput(
+        inputId = "check",
+        label = "Select Ownership Type",
+        choices = list("Licensed" = checkbox_values[1],
+                       "Joint Venture" = checkbox_values[2],
+                       "Company Owned" = checkbox_values[3],
+                       "Franchise" = checkbox_values[4]
+                       ),
+        selected = checkbox_values,
+        inline = TRUE
       )
     ),
     # give a name to be passed to the server(output)
@@ -44,6 +58,7 @@ ui <- tabPanel(
 
 server <- function(input, output) {
   filtered <- reactive({
+    directory <- directory[directory$Ownership.Type %in% input$check, ]
     directory %>% 
       filter(country_name == input$search) %>% 
       mutate(description = paste("City:<b>", City, "</b><br>",
