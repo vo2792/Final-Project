@@ -3,6 +3,7 @@ library(leaflet)
 
 source("prepare_map.R")
 source("prepare_table.R")
+source("prepare_food_comparison.R")
 
 # introduction
 intro <- tabPanel(
@@ -112,6 +113,47 @@ tab_three <- tabPanel(
   )
 )
 
+# fourth tab
+tab_four <- tabPanel(
+  # tab naming
+  "Food comparison",
+  
+  # title of tab
+  titlePanel("Which food contains more..?"),
+  
+  # sidebar layout
+  sidebarLayout(
+    # sidebar panel
+    sidebarPanel(
+      # inputs that we would like to implement (eg. selectInput, sliderInput)
+      selectInput(
+        inputId = "food_1",
+        label = "Select food you want to try",
+        choices = item,
+        selected = "Chonga Bagel"
+      ),
+      
+      selectInput(
+        inputId = "food_2",
+        label = "Select another food you want to try",
+        choices = item,
+        selected = "8-Grain Roll"
+      ),
+      
+      radioButtons(
+        inputId = "nutrition",
+        label = "Compared by",
+        choices = list("Calories","Fat","Carb","Fiber","Protein")
+      )
+    ),
+    
+    # give a name to be passed to the server(output)
+    mainPanel(
+      plotOutput("food")
+    )
+  )
+)
+
 # Final Project Shiny structure
 shinyUI(navbarPage(
   strong("Starbucks"),
@@ -125,6 +167,9 @@ shinyUI(navbarPage(
   tab_two,
   
   # third tab
-  tab_three
+  tab_three,
+  
+  # fourth tab
+  tab_four
 ))
 

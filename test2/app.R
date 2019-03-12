@@ -77,3 +77,96 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
+
+
+# e
+filtered2 <- reactive({
+  if(input$drink == "All") {
+    drinks %>% 
+      select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+  }
+  else {
+    drinks %>% 
+      filter(Beverage_Category == input$drink) %>% 
+      select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+  }
+})
+
+output$table <- renderDataTable({
+  filtered2()
+})
+
+# render the third object defined in tab three
+## todo:
+##output$SOME_NAME_THREE <-
+filtered3 <- reactive({
+  if(input$choice == "All") {
+    food %>% 
+      select(Food, input$specify)
+  } else {
+    food %>% 
+      filter(Food == input$choice) %>% 
+      select(Food, input$specify)
+  }
+})
+
+tab_two <- tabPanel(
+  # tab naming
+  "Drinks",
+  # title of tab
+  titlePanel("Drink Nutritional Facts"),
+  # sidebar layout
+  sidebarLayout(
+    # sidebar panel
+    sidebarPanel(
+      selectInput(
+        inputId = "drink",
+        label = "Drink Category",
+        choices = types,
+        selected = types[1]
+      ),
+      checkboxGroupInput(
+        inputId = "filter",
+        label = "Filter:",
+        choices = colnames(drinks)[4:18],
+        selected = colnames(drinks)[4:18]
+      )
+    ),
+    mainPanel(
+      dataTableOutput("table")
+    )
+  )
+)
+
+# third page
+tab_three <- tabPanel(
+  # tab naming
+  "Food",
+  # title of tab
+  titlePanel("Food Nutritional Facts"),
+  
+  # sidebar layout
+  sidebarLayout(
+    # sidebar panel
+    sidebarPanel(
+      # inputs that we would like to implement (eg. selectInput, sliderInput)
+      selectInput(
+        inputId = "choice",
+        label = "Food Category",
+        choices = items,
+        selected = items[1]
+      ),
+      checkboxGroupInput(
+        inputId = "specify",
+        label = "Filter:",
+        choices = colnames(food)[2:6],
+        selected = colnames(food)[2:6]
+      )
+    ),
+    # give a name to be passed to the server(output)
+    mainPanel(
+      # plotlyOutput("name")
+      dataTableOutput("table2")
+    )
+  )
+)
