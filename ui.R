@@ -10,20 +10,8 @@ intro <- tabPanel(
   "Introduction",
   fluidPage(
     h1("The Starbucks Project"),
-    fluidRow(
-      HTML("<h2>Some insights about the map</h2>"),
-      HTML("<p>Starbucks has been expanding to <strong>73</strong>
-           countries worldwide. For the sake of tidiness, the tables
-           shown below are limited to only display the top ten countries and
-           cities that have the most Starbucks stores respectively.
-           <em>USA</em> stays on top of the record for
-           having <strong>13608</strong> stores, followed by
-           <em>China</em> where it has <strong>2734</strong>
-           stores across the country. For what's not shown on the table,
-           <em>Andorra</em> has only <strong>1</strong> Starbucks location"),
-      column(6, tableOutput("rankworld")),
-      column(6, tableOutput("rankcity"))
-    )
+    HTML("<h1>Write a story!!!</h1>"),
+    HTML("<p>Consumerism</p>")
   )
 )
 
@@ -59,7 +47,34 @@ tab_one <- tabPanel(
     ),
     # give a name to be passed to the server(output)
     mainPanel(
-      leafletOutput("map")
+      HTML("<h1>A Map To Play</h1>"),
+      leafletOutput("map"),
+      fluidRow(
+        HTML("<h1>Some insights about the map</h1>"),
+        HTML("<p>Starbucks is growing strong! As of 2017, it has 
+             <strong>25600</strong> recorded
+             locations worldwide, spreading across <strong>73</strong>
+             countries. For the sake of tidiness,<br>
+             the tables shown below are limited to only display the top
+             ten countries and cities that have the most Starbucks stores
+             respectively. <em>USA</em> stays on <br>
+             top of the record for having <strong>13608</strong> stores,
+             followed by <em>China</em> where it has <strong>2734</strong>
+             stores across the country. For what's not shown on the table, <br>
+             <em>Andorra</em> has only <strong>1</strong> Starbucks location
+             across the country. Another interesting side to look at is
+             the number of stores each city has. <br>
+             <em>Shanghai</em> tops the list by having <strong>542</strong>
+             stores. In the meantime, there are <em>2653 cities</em>
+             with only <strong>1</strong> Starbucks store.</p>"),
+        HTML("<p>Another interesting fact observed from the dataset is that
+             <em>Australia</em> despite spanning 2.97 millions square miles
+             only has <strong>22</strong> Starbucks's locations, <br>
+             which may be worth investigating why Starbucks is not expanding
+             well in Australia.</p>"),
+        column(6, tableOutput("rankworld")),
+        column(6, tableOutput("rankcity"))
+        )
     )
   )
 )
