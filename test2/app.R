@@ -1,6 +1,12 @@
 library(dplyr)
 
+food <- read.csv(
+  con <- file("../test3/starbucks-menu/starbucks-menu-nutrition-food.csv",
+              encoding = "UCS-2LE"))
 drinks <- read.csv("../data/starbucks_drinkMenu_expanded.csv")
+
+colnames(food) <- c("Food", "Calories", "Fat(g)", "Carbohydrates(g)", 
+                    "Dietary Fiber(g)", "Protein(g)")
 
 colnames(drinks) <- c("Beverage_Category", "Beverage", "Beverage_Prep",
                     "Calories", "Total_Fat(g)", "Trans_Fat(g)",
@@ -37,15 +43,14 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   filtered <- reactive({
-    ifelse(
-      input$drink == "All", 
-      drinks,
+    if(input$drink == "All") {
+      drinks %>% 
+        select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+    } else {
       drinks %>% 
         filter(Beverage_Category == input$drink) %>% 
-        select(-Beverage_Category)
-    )
-    drinks %>% 
-      select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+        select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+    }
   })
   output$table <- renderDataTable({
     filtered()

@@ -5,6 +5,7 @@ library(shiny)
 
 source("prepare_map.R")
 source("prepare_table.R")
+source("prepare_food_comparison.R")
 
 shinyServer(function(input, output) {
   # render the first object defined in tab_one
@@ -47,15 +48,15 @@ shinyServer(function(input, output) {
   ## todo:
   ## output$SOME_NAME_TWO <-
   filtered2 <- reactive({
-    ifelse(
-      input$drink == "All", 
-      menu,
-      menu %>% 
+    if(input$drink == "All") {
+      drinks %>% 
+        select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+    }
+    else {
+      drinks %>% 
         filter(Beverage_Category == input$drink) %>% 
-        select(-Beverage_Category)
-    )
-    menu %>% 
-      select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+        select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+    }
   })
   
   output$table <- renderDataTable({
@@ -65,4 +66,35 @@ shinyServer(function(input, output) {
   # render the third object defined in tab three
   ## todo:
   ##output$SOME_NAME_THREE <-
+  filtered3 <- reactive({
+    ifelse(
+      input$choice == "All", 
+      food,
+      food %>% 
+        filter(Food == input$choice) 
+    )
+    food %>% 
+      select(Food, input$specify)
+  })
+  
+  output$table2 <- renderDataTable({
+    filtered3()
+  })
+  
+  # render the fourth object defined in tab three
+  ## todo:
+  ##output$SOME_NAME_FOUR <-
+  filtered4 <- reactive({
+    foods <- foods %>% filter(item == input$food_1 | item == input$food_2) 
+    foods
+  })
+  
+  output$food <- renderPlot({
+    filtered4() %>% 
+      ggplot(aes_string(x = "item", y = input$nutrition)) +
+      geom_col(fill = "lightblue", width = 0.3) +
+      theme_bw() +
+      labs(x = "")
+  })
 })
+

@@ -3,6 +3,7 @@ library(leaflet)
 
 source("prepare_map.R")
 source("prepare_table.R")
+source("prepare_food_comparison.R")
 
 # introduction
 intro <- tabPanel(
@@ -66,9 +67,9 @@ tab_one <- tabPanel(
 # second page
 tab_two <- tabPanel(
 # tab naming
-  "Nutrition Facts",
+  "Drinks",
 # title of tab
-  titlePanel("Nutritional Facts Chart"),
+  titlePanel("Drink Nutritional Facts"),
 # sidebar layout
   sidebarLayout(
      # sidebar panel
@@ -82,8 +83,8 @@ tab_two <- tabPanel(
       checkboxGroupInput(
         inputId = "filter",
         label = "Filter:",
-        choices = colnames(menu)[4:18],
-        selected = colnames(menu)[4:18]
+        choices = colnames(drinks)[4:18],
+        selected = colnames(drinks)[4:18]
       )
     ),
     mainPanel(
@@ -92,25 +93,79 @@ tab_two <- tabPanel(
   )
 )
  
-# # third page
-# tab_three <- tabPanel(
-#   # tab naming
-#   
-#   # title of tab
-#   titlePanel(),
-#   
-#   # sidebar layout
-#   sidebarLayout(
-#     # sidebar panel
-#     sidebarPanel(
-#       # inputs that we would like to implement (eg. selectInput, sliderInput)
-#     ),
-#     # give a name to be passed to the server(output)
-#     mainPanel(
-#       # plotlyOutput("name")
-#     )
-#   )
-# )
+# third page
+tab_three <- tabPanel(
+  # tab naming
+  "Food",
+  # title of tab
+  titlePanel("Food Nutritional Facts"),
+  
+  # sidebar layout
+  sidebarLayout(
+    # sidebar panel
+    sidebarPanel(
+      # inputs that we would like to implement (eg. selectInput, sliderInput)
+      selectInput(
+        inputId = "choice",
+        label = "Food Category",
+        choices = items,
+        selected = items[1]
+      ),
+      checkboxGroupInput(
+        inputId = "specify",
+        label = "Filter:",
+        choices = colnames(food)[2:6],
+        selected = colnames(food)[2:6]
+      )
+    ),
+    # give a name to be passed to the server(output)
+    mainPanel(
+      # plotlyOutput("name")
+      dataTableOutput("table2")
+    )
+  )
+)
+
+# fourth tab
+tab_four <- tabPanel(
+  # tab naming
+  "Food comparison",
+  
+  # title of tab
+  titlePanel("Which food contains more..?"),
+  
+  # sidebar layout
+  sidebarLayout(
+    # sidebar panel
+    sidebarPanel(
+      # inputs that we would like to implement (eg. selectInput, sliderInput)
+      selectInput(
+        inputId = "food_1",
+        label = "Select food you want to try",
+        choices = item,
+        selected = "Chonga Bagel"
+      ),
+      
+      selectInput(
+        inputId = "food_2",
+        label = "Select another food you want to try",
+        choices = item,
+        selected = "8-Grain Roll"
+      ),
+      
+      radioButtons(
+        inputId = "nutrition",
+        label = "Compared by",
+        choices = list("Calories","Fat","Carb","Fiber","Protein")
+      )
+    ),
+    
+    # give a name to be passed to the server(output)
+    mainPanel(
+      plotOutput("food")
+    )
+  )
+)
 
 # Final Project Shiny structure
 shinyUI(navbarPage(
@@ -122,9 +177,12 @@ shinyUI(navbarPage(
   tab_one,
   
   # second tab
-  tab_two
+  tab_two,
   
   # third tab
-  # tab_three
+  tab_three,
+  
+  # fourth tab
+  tab_four
 ))
 
