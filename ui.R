@@ -8,7 +8,7 @@ source("prepare_table.R")
 intro <- tabPanel(
   "Introduction",
   fluidPage(
-    h1("The Starbucks Project"),
+    h1("The Starbucks Project")
     
   )
 )
@@ -53,9 +53,9 @@ tab_one <- tabPanel(
 # second page
 tab_two <- tabPanel(
 # tab naming
-  "Nutrition Facts",
+  "Drinks",
 # title of tab
-  titlePanel("Nutritional Facts Chart"),
+  titlePanel("Drink Nutritional Facts"),
 # sidebar layout
   sidebarLayout(
      # sidebar panel
@@ -69,8 +69,8 @@ tab_two <- tabPanel(
       checkboxGroupInput(
         inputId = "filter",
         label = "Filter:",
-        choices = colnames(menu)[4:18],
-        selected = colnames(menu)[4:18]
+        choices = colnames(drinks)[4:18],
+        selected = colnames(drinks)[4:18]
       )
     ),
     mainPanel(
@@ -79,25 +79,38 @@ tab_two <- tabPanel(
   )
 )
  
-# # third page
-# tab_three <- tabPanel(
-#   # tab naming
-#   
-#   # title of tab
-#   titlePanel(),
-#   
-#   # sidebar layout
-#   sidebarLayout(
-#     # sidebar panel
-#     sidebarPanel(
-#       # inputs that we would like to implement (eg. selectInput, sliderInput)
-#     ),
-#     # give a name to be passed to the server(output)
-#     mainPanel(
-#       # plotlyOutput("name")
-#     )
-#   )
-# )
+# third page
+tab_three <- tabPanel(
+  # tab naming
+  "Food",
+  # title of tab
+  titlePanel("Food Nutritional Facts"),
+  
+  # sidebar layout
+  sidebarLayout(
+    # sidebar panel
+    sidebarPanel(
+      # inputs that we would like to implement (eg. selectInput, sliderInput)
+      selectInput(
+        inputId = "choice",
+        label = "Food Category",
+        choices = items,
+        selected = items[1]
+      ),
+      checkboxGroupInput(
+        inputId = "specify",
+        label = "Filter:",
+        choices = colnames(food)[2:6],
+        selected = colnames(food)[2:6]
+      )
+    ),
+    # give a name to be passed to the server(output)
+    mainPanel(
+      # plotlyOutput("name")
+      dataTableOutput("table2")
+    )
+  )
+)
 
 # Final Project Shiny structure
 shinyUI(navbarPage(
@@ -109,9 +122,9 @@ shinyUI(navbarPage(
   tab_one,
   
   # second tab
-  tab_two
+  tab_two,
   
   # third tab
-  # tab_three
+  tab_three
 ))
 
