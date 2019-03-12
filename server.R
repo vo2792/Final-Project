@@ -41,6 +41,7 @@ shinyServer(function(input, output) {
   
   output$rankcity <- renderTable({
     rank_city %>%
+      top_n(10) %>%
       rename("City" = City, "Num of Stores" = totalstores)
   }, caption = "Rank by City")
   

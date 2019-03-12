@@ -30,14 +30,14 @@ rank_world <- rank_world %>%
 rank_world[is.na(rank_world$country_name), 1] <- "Curaçao"
 
 # number of stores by city
-rank_city <- rank_func("City") %>%
-  top_n(10)
+rank_city <- rank_func("City")
 
 total_for_each_num <- rank_city %>%
   group_by(totalstores) %>%
   summarise(how_many = n())
 
-total_for_each_num[total_for_each_num$totalstores == "1", "how_many"]
+city_with_one_store <-
+  total_for_each_num[total_for_each_num$totalstores == "1", "how_many"]
 
 # Create discrete values
 select_values <- unique(directory$country_name)
