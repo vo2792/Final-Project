@@ -26,3 +26,22 @@ type <- drinks %>%
 types <- as.character(type$Beverage_Category)
 types[10] <- "All"
 types <- sort(types)
+
+caffeine_data <- menu %>%
+  select(Beverage_Category, Beverage, `Caffeine(mg)`)
+#There are 64mg of caffeine in each shot of expresso.
+
+caffeine_data$num_expresso_shot <-  round(as.numeric(caffeine_data$`Caffeine(mg)`) / 64, digits = 2)
+
+caffeine_varies <- filter(caffeine_data, is.na(caffeine_data$num_expresso_shot))
+caffeine_data_num <- filter(caffeine_data, !is.na(caffeine_data$num_expresso_shot))
+colnames(caffeine_data_num)[colnames(caffeine_data_num) == "Caffeine(mg)"] <- "Caffeine_mg"
+
+beverage_type <- caffeine_data$Beverage_Category
+
+avg_caffeine <- caffeine_data_num %>% 
+  group_by(Beverage_Category) %>% 
+  select(Beverage_Category, Caffeine_mg) %>% 
+  summarise(Avg_Caffeine_mg = round(mean(as.numeric(Caffeine_mg)), digits = 2))
+
+avg_caffeine$avg_expresso_shot <- round(avg_caffeine$Avg_Caffeine_mg / 64, digits = 2)

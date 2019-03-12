@@ -21,3 +21,4 @@ directory %>%
   filter(Ownership.Type == "Licensed",
          Country == "US") %>%
   nrow()
+  

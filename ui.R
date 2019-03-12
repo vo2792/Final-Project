@@ -76,7 +76,31 @@ tab_two <- tabPanel(
     mainPanel(
       dataTableOutput("table")
     )
+  ),
+"Measuring Caffeine", # label for the tab in the navbar
+h2("Measuing Caffeine in Expresso Shots"), # show with a displayed title
+# This content uses a sidebar layout
+sidebarLayout(
+  sidebarPanel(
+    selectInput(
+      inputId = "drink_type",
+      label = "Beverage Category",
+      selected = types[1],
+      choices = types[2:10]
+    )
+  ),
+  mainPanel(
+    plotOutput("bargraph3"),
+    h3("Caffeine Varies in These Drinks"),
+    dataTableOutput("table4"),
+    plotOutput("bar_graph5"),
+    p("This bar graph just gives an estimated comparison between
+           which type of Starbucks drink typically have more caffeine.
+           It does not include data on drinks that do not have a set 
+           amount of caffeine because it varies.")
   )
+)
+
 )
  
 # third page
