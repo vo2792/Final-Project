@@ -33,6 +33,17 @@ shinyServer(function(input, output) {
                  clusterOptions = markerClusterOptions()) 
   })
   
+  output$rankworld <- renderTable({
+    rank_world %>%
+      top_n(10) %>%
+      rename("Country" = country_name, "Num of Stores" = totalstores)
+    }, caption = "Rank by Country")
+  
+  output$rankcity <- renderTable({
+    rank_city %>%
+      rename("City" = City, "Num of Stores" = totalstores)
+  }, caption = "Rank by City")
+  
   # render the second object defined in tab two
   ## todo:
   ## output$SOME_NAME_TWO <-
