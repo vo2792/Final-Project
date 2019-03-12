@@ -5,6 +5,7 @@ library(shiny)
 
 source("prepare_map.R")
 source("prepare_table.R")
+source("prepare_food_comparison.R")
 
 shinyServer(function(input, output) {
   # render the first object defined in tab_one
@@ -67,6 +68,22 @@ shinyServer(function(input, output) {
   
   output$table2 <- renderDataTable({
     filtered3()
+  })
+  
+  # render the fourth object defined in tab three
+  ## todo:
+  ##output$SOME_NAME_FOUR <-
+  filtered4 <- reactive({
+    foods <- foods %>% filter(item == input$food_1 | item == input$food_2) 
+    foods
+  })
+  
+  output$food <- renderPlot({
+    filtered4() %>% 
+      ggplot(aes_string(x = "item", y = input$nutrition)) +
+      geom_col(fill = "lightblue", width = 0.3) +
+      theme_bw() +
+      labs(x = "")
   })
 })
 
