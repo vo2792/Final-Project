@@ -38,7 +38,14 @@ ui <- fluidPage(
     selected = colnames(drinks)[4:18],
     inline = TRUE
   ),
-  dataTableOutput("table")
+  selectInput(
+    "category",
+    label = "Drink Category (for plot)",
+    choices = colnames(drinks)[4:18],
+    selected = colnames(drinks)[4]
+  ),
+  dataTableOutput("table"),
+  plotOutput("boxplot")
 )
 
 server <- function(input, output) {
@@ -52,9 +59,21 @@ server <- function(input, output) {
         select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
     }
   })
+  
   output$table <- renderDataTable({
     filtered()
   }) 
+  
+  output$boxplot <- renderPlot({
+    plot <- ggplot(drinks) +
+      geom_boxplot(mapping = aes(x = Beverage_Category, 
+                                 y = Calories, 
+                                 fill = Beverage_Category)) + 
+      labs(title = "Trends in Each Drink Category", 
+           x = "Beverage Category", y = input$category) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    plot
+  })
 }
 
 shinyApp(ui = ui, server = server)
