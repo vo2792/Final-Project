@@ -96,5 +96,16 @@ shinyServer(function(input, output) {
       theme_bw() +
       labs(x = "")
   })
+  
+  output$boxplot <- renderPlot({
+    plot <- ggplot(drinks) +
+      geom_boxplot(mapping = aes(x = Beverage_Category, 
+                                 y = Calories, 
+                                 fill = Beverage_Category)) + 
+      labs(title = "Trends in Each Drink Category", 
+           x = "Beverage Category", y = input$category) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    plot
+  })
 })
 

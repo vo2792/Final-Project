@@ -85,10 +85,17 @@ tab_two <- tabPanel(
         label = "Filter:",
         choices = colnames(drinks)[4:18],
         selected = colnames(drinks)[4:18]
+      ),
+      selectInput(
+        "category",
+        label = "Drink Category (for plot)",
+        choices = colnames(drinks)[4:18],
+        selected = colnames(drinks)[4]
       )
     ),
     mainPanel(
-      dataTableOutput("table")
+      dataTableOutput("table"),
+      plotOutput("boxplot")
     )
   )
 )
