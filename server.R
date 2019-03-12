@@ -36,15 +36,15 @@ shinyServer(function(input, output) {
   ## todo:
   ## output$SOME_NAME_TWO <-
   filtered2 <- reactive({
-    ifelse(
-      input$drink == "All", 
-      menu,
-      menu %>% 
+    if(input$drink == "All") {
+      drinks %>% 
+        select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+    }
+    else {
+      drinks %>% 
         filter(Beverage_Category == input$drink) %>% 
-        select(-Beverage_Category)
-    )
-    menu %>% 
-      select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+        select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
+    }
   })
   
   output$table <- renderDataTable({
@@ -54,4 +54,19 @@ shinyServer(function(input, output) {
   # render the third object defined in tab three
   ## todo:
   ##output$SOME_NAME_THREE <-
+  filtered3 <- reactive({
+    ifelse(
+      input$choice == "All", 
+      food,
+      food %>% 
+        filter(Food == input$choice) 
+    )
+    food %>% 
+      select(Food, input$specify)
+  })
+  
+  output$table2 <- renderDataTable({
+    filtered3()
+  })
 })
+
