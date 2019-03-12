@@ -10,7 +10,7 @@ intro <- tabPanel(
   "Introduction",
   fluidPage(
     h1("The Starbucks Project"),
-    HTML("<h1> Write a story!!!</h1>"),
+    HTML("<h1>Write a story!!!</h1>"),
     HTML("<p>Consumerism</p>")
   )
 )
@@ -52,7 +52,7 @@ tab_one <- tabPanel(
       fluidRow(
         HTML("<h1>Some insights about the map</h1>"),
         HTML("<p>Starbucks is growing strong! As of 2017, it has 
-             <strong>25600</strong> recorded 
+             <strong>25600</strong> recorded
              locations worldwide, spreading across <strong>73</strong>
              countries. For the sake of tidiness,<br>
              the tables shown below are limited to only display the top
@@ -66,7 +66,12 @@ tab_one <- tabPanel(
              the number of stores each city has. <br>
              <em>Shanghai</em> tops the list by having <strong>542</strong>
              stores. In the meantime, there are <em>2653 cities</em>
-             with only <strong>1</strong> Starbucks store."),
+             with only <strong>1</strong> Starbucks store.</p>"),
+        HTML("<p>Another interesting fact observed from the dataset is that
+             <em>Australia</em> despite spanning 2.97 millions square miles
+             only has <strong>22</strong> Starbucks's locations, <br>
+             which may be worth investigating why Starbucks is not expanding
+             well in Australia.</p>"),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
         )
