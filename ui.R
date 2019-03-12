@@ -25,7 +25,7 @@ intro <- tabPanel(
            <em>Andorra</em> has only <strong>1</strong> Starbucks location
            across the country. Another interesting side to look at is
            the number of stores each city has. <em>Shanghai</em> tops the list
-           by having <strong>542</strong> stores, in the meantime, there are
+           by having <strong>542</strong> stores. In the meantime, there are
            <strong>2653</strong> cities with only <strong>1</strong>
            Starbucks store."),
       column(6, tableOutput("rankworld")),
@@ -93,10 +93,17 @@ tab_two <- tabPanel(
         label = "Filter:",
         choices = colnames(drinks)[4:18],
         selected = colnames(drinks)[4:18]
+      ),
+      selectInput(
+        "category",
+        label = "Drink Category (for plot)",
+        choices = colnames(drinks)[4:18],
+        selected = colnames(drinks)[4]
       )
     ),
     mainPanel(
-      dataTableOutput("table")
+      dataTableOutput("table"),
+      plotOutput("boxplot")
     )
   )
 )
