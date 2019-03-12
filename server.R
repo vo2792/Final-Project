@@ -55,14 +55,14 @@ shinyServer(function(input, output) {
   ## todo:
   ##output$SOME_NAME_THREE <-
   filtered3 <- reactive({
-    ifelse(
-      input$choice == "All", 
-      food,
+    if(input$choice == "All") {
       food %>% 
-        filter(Food == input$choice) 
-    )
-    food %>% 
-      select(Food, input$specify)
+        select(Food, input$specify)
+    } else {
+      food %>% 
+        filter(Food == input$choice) %>% 
+        select(Food, input$specify)
+    }
   })
   
   output$table2 <- renderDataTable({
