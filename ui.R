@@ -9,7 +9,20 @@ intro <- tabPanel(
   "Introduction",
   fluidPage(
     h1("The Starbucks Project"),
-    
+    fluidRow(
+      HTML("<h1>Some insights about the map</h1>"),
+      HTML("<p>Starbucks has been expanding to <strong>73</strong>
+           countries worldwide. For the sake of tidiness, the tables
+           shown below are limited to only display the top ten countries and
+           cities that have the most Starbucks stores respectively.
+           <em>USA</em> stays on top of the record for
+           having <strong>13608</strong> stores, followed by
+           <em>China</em> where it has <strong>2734</strong>
+           stores across the country. For what's not shown on the table,
+           <em>Andorra</em> has only <strong>1</strong> Starbucks location"),
+      column(6, tableOutput("rankworld")),
+      column(6, tableOutput("rankcity"))
+    )
   )
 )
 
