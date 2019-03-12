@@ -10,7 +10,8 @@ intro <- tabPanel(
   "Introduction",
   fluidPage(
     h1("The Starbucks Project"),
-    HTML("<h1> Write a story!!!</h1>")
+    HTML("<h1> Write a story!!!</h1>"),
+    HTML("<p>Consumerism</p>")
   )
 )
 
@@ -64,8 +65,8 @@ tab_one <- tabPanel(
              across the country. Another interesting side to look at is
              the number of stores each city has. <br>
              <em>Shanghai</em> tops the list by having <strong>542</strong>
-             stores. In the meantime, there are <strong>2653</strong>
-             cities with only <strong>1</strong> Starbucks store."),
+             stores. In the meantime, there are <em>2653 cities</em>
+             with only <strong>1</strong> Starbucks store."),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
         )
