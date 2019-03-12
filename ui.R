@@ -11,7 +11,7 @@ intro <- tabPanel(
   fluidPage(
     h1("The Starbucks Project"),
     fluidRow(
-      HTML("<h1>Some insights about the map</h1>"),
+      HTML("<h2>Some insights about the map</h2>"),
       HTML("<p>Starbucks has been expanding to <strong>73</strong>
            countries worldwide. For the sake of tidiness, the tables
            shown below are limited to only display the top ten countries and
