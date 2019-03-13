@@ -117,6 +117,7 @@ shinyServer(function(input, output) {
         x = "Beverage Categories", # x-axis label
         y = "Amount of Caffeine Measured in Shots " # y-axis label
       )
+  })
   # render the fourth object defined in tab three
   ## todo:
   ##output$SOME_NAME_FOUR <-

@@ -1,8 +1,8 @@
 library(dplyr)
 food <- read.csv(
   con <- file("test3/starbucks-menu/starbucks-menu-nutrition-food.csv",
-              encoding = "UCS-2LE"))
-drinks <- read.csv("data/starbucks_drinkMenu_expanded.csv")
+              encoding = "UCS-2LE"), stringsAsFactors = FALSE)
+drinks <- read.csv("data/starbucks_drinkMenu_expanded.csv", stringsAsFactors = FALSE)
 
 
 colnames(food) <- c("Food", "Calories", "Fat(g)", "Carbohydrates(g)", 
@@ -27,7 +27,7 @@ types <- as.character(type$Beverage_Category)
 types[10] <- "All"
 types <- sort(types)
 
-caffeine_data <- menu %>%
+caffeine_data <- drinks %>%
   select(Beverage_Category, Beverage, `Caffeine(mg)`)
 #There are 64mg of caffeine in each shot of expresso.
 
