@@ -117,6 +117,7 @@ shinyServer(function(input, output) {
         x = "Beverage Categories", # x-axis label
         y = "Amount of Caffeine Measured in Shots " # y-axis label
       )
+  })
   # render the fourth object defined in tab three
   ## todo:
   ##output$SOME_NAME_FOUR <-
@@ -128,8 +129,8 @@ shinyServer(function(input, output) {
   output$food <- renderPlot({
     filtered4() %>%
       ggplot(aes_string(x = "item", y = input$nutrition)) +
-      geom_col(fill = "lightblue", width = 0.3) +
-      theme_bw() +
+      geom_col(fill = "dark green", width = 0.3) +
+      ggthemes::theme_solarized() +
       labs(x = "")
   })
 

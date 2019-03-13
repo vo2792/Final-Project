@@ -27,7 +27,7 @@ types <- as.character(type$Beverage_Category)
 types[10] <- "All"
 types <- sort(types)
 
-caffeine_data <- menu %>%
+caffeine_data <- drinks %>%
   select(Beverage_Category, Beverage, `Caffeine(mg)`)
 #There are 64mg of caffeine in each shot of expresso.
 
