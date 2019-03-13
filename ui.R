@@ -16,12 +16,15 @@ intro <- tabPanel(
   )
 )
 
+# string for background (R reads the url wrongly when separated into two lines)
+background <- "https://linkbookmarking.com/wp-content/uploads/2018/08/high_quality_wallpaper_HD_1080_IDS_1172781.jpg"
+
 # first page
 tab_one <- tabPanel(
   # tab naming
   "Map",
 
-  setBackgroundImage("https://linkbookmarking.com/wp-content/uploads/2018/08/high_quality_wallpaper_HD_1080_IDS_1172781.jpg"),
+  setBackgroundImage(background),
   # title of tab
   titlePanel("Location in Each Country"),
   # sidebar layout
