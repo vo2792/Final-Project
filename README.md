@@ -2,7 +2,7 @@
 
 ## Project Description
 
-We will be working with `.csv` files and **APIs** that contain information about the **[Worldwide Locations of Starbucks](https://www.kaggle.com/starbucks/store-locations#directory.csv)** and the **[Nutrition Facts](https://www.kaggle.com/starbucks/starbucks-menu)** for each Starbucks' drink menu item. We obtained both datasets from [kaggle.com](https://www.kaggle.com/). Also, we use the country codes dataset from [this kaggle page](https://www.kaggle.com/juanumusic/countries-iso-codes#wikipedia-iso-country-codes.csv). Our **main target audience** will be **coffee connoisseurs** around the world. Our objective is to provide a some specified information that we find important to address:
+We will be working with `.csv` files that contain information about the **[Worldwide Locations of Starbucks](https://www.kaggle.com/starbucks/store-locations#directory.csv)** and the **[Nutrition Facts](https://www.kaggle.com/starbucks/starbucks-menu)** for each Starbucks' drink menu item. We obtained both datasets from [kaggle.com](https://www.kaggle.com/). Also, we use the country codes dataset from [this kaggle page](https://www.kaggle.com/juanumusic/countries-iso-codes#wikipedia-iso-country-codes.csv). Our **main target audience** will be **coffee connoisseurs** around the world. Our objective is to provide a some specified information that we find important to address:
 
 > The **highest** and **lowest** calorie drinks from Starbucks' menu.
 

@@ -10,7 +10,7 @@ source("prepare_food_comparison.R")
 intro <- tabPanel(
   "Introduction",
   fluidPage(
-    h1("The Starbucks Project"),
+    HTML("<h1>The Starbucks Project</h1>"),
     HTML("<h1>Write a story!!!</h1>"),
     HTML("<p>Consumerism</p>")
   )
@@ -26,7 +26,8 @@ tab_one <- tabPanel(
 
   setBackgroundImage(background),
   # title of tab
-  titlePanel("Location in Each Country"),
+  includeCSS("styles.css"),
+  headerPanel("Location in Each Country"),
   # sidebar layout
   sidebarLayout(
     # sidebar panel
@@ -51,19 +52,14 @@ tab_one <- tabPanel(
     ),
     # give a name to be passed to the server(output)
     mainPanel(
-      HTML("<h1>A Map To Play</h1>"),
+      includeCSS("styles.css"),
+      HTML("
+<h1>A Map To Play</h1>
+           "),
       leafletOutput("map"),
       fluidRow(
-        HTML("<h1><font color=#FBFF85>Some insights about the map</font></h1>"),
+        HTML("<h1><font =>Some insights about the map</font></h1>"),
         HTML(my_str),
-        HTML("<p>Another interesting fact observed from the dataset is that
-             <em>Australia</em> despite spanning 2.97 millions square miles
-             only has <strong>22</strong> Starbucks's locations, <br>
-             which may be worth investigating why Starbucks is not expanding
-             well in Australia.</p>"),
-        HTML("<p></p>
-             <p>There are definitely many more things to be explored. Feel free
-             to play around with the map and discover your own findings!</p>"),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
         )
@@ -76,7 +72,7 @@ tab_two <- tabPanel(
 # tab naming
   "Drinks",
 # title of tab
-  titlePanel("Drink Nutritional Facts"),
+  headerPanel("Drink Nutritional Facts"),
 # sidebar layout
   sidebarLayout(
      # sidebar panel
@@ -136,7 +132,7 @@ tab_three <- tabPanel(
   # tab naming
   "Food",
   # title of tab
-  titlePanel("Food Nutritional Facts"),
+  headerPanel("Food Nutritional Facts"),
   
   # sidebar layout
   sidebarLayout(
@@ -170,7 +166,7 @@ tab_four <- tabPanel(
   "Food comparison",
   
   # title of tab
-  titlePanel("Which food contains more..?"),
+  headerPanel("Which food contains more..?"),
   
   # sidebar layout
   sidebarLayout(
