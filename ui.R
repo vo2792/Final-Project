@@ -1,5 +1,6 @@
 library(shiny)
 library(leaflet)
+library(shinyWidgets)
 
 source("prepare_map.R")
 source("prepare_table.R")
@@ -19,10 +20,10 @@ intro <- tabPanel(
 tab_one <- tabPanel(
   # tab naming
   "Map",
-  
+
+  setBackgroundImage("https://linkbookmarking.com/wp-content/uploads/2018/08/high_quality_wallpaper_HD_1080_IDS_1172781.jpg"),
   # title of tab
   titlePanel("Location in Each Country"),
-  
   # sidebar layout
   sidebarLayout(
     # sidebar panel
@@ -50,28 +51,16 @@ tab_one <- tabPanel(
       HTML("<h1>A Map To Play</h1>"),
       leafletOutput("map"),
       fluidRow(
-        HTML("<h1>Some insights about the map</h1>"),
-        HTML("<p>Starbucks is growing strong! As of 2017, it has 
-             <strong>25600</strong> recorded
-             locations worldwide, spreading across <strong>73</strong>
-             countries. For the sake of tidiness,<br>
-             the tables shown below are limited to only display the top
-             ten countries and cities that have the most Starbucks stores
-             respectively. <em>USA</em> stays on <br>
-             top of the record for having <strong>13608</strong> stores,
-             followed by <em>China</em> where it has <strong>2734</strong>
-             stores across the country. For what's not shown on the table, <br>
-             <em>Andorra</em> has only <strong>1</strong> Starbucks location
-             across the country. Another interesting side to look at is
-             the number of stores each city has. <br>
-             <em>Shanghai</em> tops the list by having <strong>542</strong>
-             stores. In the meantime, there are <em>2653 cities</em>
-             with only <strong>1</strong> Starbucks store.</p>"),
+        HTML("<h1><font color=#FBFF85>Some insights about the map</font></h1>"),
+        HTML(my_str),
         HTML("<p>Another interesting fact observed from the dataset is that
              <em>Australia</em> despite spanning 2.97 millions square miles
              only has <strong>22</strong> Starbucks's locations, <br>
              which may be worth investigating why Starbucks is not expanding
              well in Australia.</p>"),
+        HTML("<p></p>
+             <p>There are definitely many more things to be explored. Feel free
+             to play around with the map and discover your own findings!</p>"),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
         )
