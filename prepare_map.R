@@ -2,12 +2,12 @@ library(tidyverse)
 
 # Load datasets
 directory <- read.csv("data/directory.csv", stringsAsFactors = F)
-abbr <- read.csv("data/wikipedia-iso-country-codes.csv", stringsAsFactors = F) %>% 
+abbr <- read.csv("data/wikipedia-iso-country-codes.csv", stringsAsFactors = F) %>%
   rename("Country" = "Alpha.2.code",
          "country_name" = "English.short.name.lower.case")
 
 # Joint the datasets
-directory <- directory %>% 
+directory <- directory %>%
   left_join(abbr, by = "Country")
 
 rank_func <- function(select_col) {
