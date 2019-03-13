@@ -122,15 +122,15 @@ shinyServer(function(input, output) {
   ## todo:
   ##output$SOME_NAME_FOUR <-
   filtered4 <- reactive({
-    foods <- foods %>% filter(item == input$food_1 | item == input$food_2)
+    foods <- foods %>% filter(Food == input$food_1 | Food == input$food_2)
     foods
   })
 
   output$food <- renderPlot({
     filtered4() %>%
-      ggplot(aes_string(x = "item", y = input$nutrition)) +
-      geom_col(fill = "lightblue", width = 0.3) +
-      theme_bw() +
+      ggplot(aes_string(x = "Food", y = input$nutrition)) +
+      geom_col(fill = "dark green", width = 0.3) +
+      ggthemes::theme_solarized() +
       labs(x = "")
   })
 

@@ -1,8 +1,8 @@
 library(dplyr)
 food <- read.csv(
   con <- file("test3/starbucks-menu/starbucks-menu-nutrition-food.csv",
-              encoding = "UCS-2LE"))
-drinks <- read.csv("data/starbucks_drinkMenu_expanded.csv")
+              encoding = "UCS-2LE"), stringsAsFactors = FALSE)
+drinks <- read.csv("data/starbucks_drinkMenu_expanded.csv", stringsAsFactors = FALSE)
 
 
 colnames(food) <- c("Food", "Calories", "Fat(g)", "Carbohydrates(g)", 
