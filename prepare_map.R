@@ -10,6 +10,11 @@ abbr <- read.csv("data/wikipedia-iso-country-codes.csv",
     "country_name" = "English.short.name.lower.case"
   )
 
+abbr <- rbind(abbr, data.frame(country_name = "Curaçao",
+                               Country = "CW",
+                               Alpha.3.code = "CUW",
+                               Numeric.code = "599",
+                               ISO.3166.2 = "SO 3166-2:CW"))
 # Joint the datasets
 directory <- directory %>%
   left_join(abbr, by = "Country")
@@ -38,8 +43,6 @@ rank_world <- rank_world %>%
   left_join(abbr, by = "Country")
 rank_world <- rank_world %>%
   select(country_name, totalstores)
-
-rank_world[is.na(rank_world$country_name), 1] <- "Curaçao"
 
 # function to select the country/city's number of stores
 store_num <- function(attr, cname) {
