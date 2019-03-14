@@ -143,6 +143,7 @@ shinyServer(function(input, output) {
                                  fill = Beverage_Category)) +
       labs(title = "Trends in Each Drink Category",
            x = "Beverage Category", y = input$category) +
+      ggthemes::theme_solarized() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
     plot
   })
