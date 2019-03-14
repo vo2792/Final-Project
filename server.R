@@ -17,6 +17,7 @@ shinyServer(function(input, output) {
                                  "Store Name:<b>", Store.Name, "</b><br>"))
   })
 
+  # visualization of map
   output$map <- renderLeaflet({
     starbucks_icon <- makeIcon(iconUrl = "starbucks.png",
                                iconWidth = 30,
@@ -31,12 +32,14 @@ shinyServer(function(input, output) {
                  clusterOptions = markerClusterOptions())
   })
 
+  # visualization of rank-by-world table
   output$rankworld <- renderTable({
     rank_world %>%
       top_n(10) %>%
       rename("Country" = country_name, "Num of Stores" = totalstores)
     }, caption = "Rank by Country")
 
+  # visualization of rank-by-city table
   output$rankcity <- renderTable({
     rank_city %>%
       top_n(10) %>%
@@ -114,6 +117,7 @@ shinyServer(function(input, output) {
       ggthemes::theme_solarized() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
   })
+  
   # render the fourth object defined in tab three
   filtered4 <- reactive({
     foods <- foods %>% filter(Food == input$food_1 | Food == input$food_2)
