@@ -11,8 +11,15 @@ intro <- tabPanel(
   "Introduction",
   fluidPage(
     HTML("<h1>The Starbucks Project</h1>"),
-    HTML("<h1>Write a story!!!</h1>"),
-    HTML("<p>Consumerism</p>")
+    HTML("<h2><font color=#036635>Welcome to our Site!</font></h2>"),
+    HTML(intro1),
+    HTML("<h2><font color=#036635>Who is our audience?</font></h2>"),
+    HTML(intro2),
+    HTML("<h2><font color=#036635>How many Starbucks are in each country?
+         </font></h2>"),
+    HTML(intro3),
+    HTML("<h2><font color=#036635>What exactly are you consuming?</h2></font>"),
+    HTML(intro4)
   )
 )
 
@@ -24,7 +31,7 @@ tab_one <- tabPanel(
   # tab naming
   "Map",
 
-  setBackgroundImage(background),
+  setBackgroundImage(),
   # title of tab
   includeCSS("styles.css"),
   headerPanel("Location in Each Country"),
@@ -53,12 +60,10 @@ tab_one <- tabPanel(
     # give a name to be passed to the server(output)
     mainPanel(
       includeCSS("styles.css"),
-      HTML("
-<h1>A Map To Play</h1>
-           "),
+      HTML("<h1>Interactive Map</h1>"),
       leafletOutput("map"),
       fluidRow(
-        HTML("<h1><font =>Some insights about the map</font></h1>"),
+        HTML("<h1><font =>Some Insights</font></h1>"),
         HTML(my_str),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
