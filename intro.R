@@ -66,8 +66,8 @@ intro3 <-
   </h4>
   <h4>
   We have provided a <em>filter</em> option that will allow you
-  to narrow down the number of stores displayed on the map specific
-  to your interest.
+  to narrow down the number of stores displayed on the map specified by
+  the type of ownership.
   </h4>"
 
 intro4 <-
@@ -81,7 +81,7 @@ intro4 <-
   seach bars and a filter, so you can really specify your search to
   find your drink and nutritional facts of interest.
   </h4>
-  <h3><font color=#036635>Are there better alternatives?</h3></font>
+  <h2><font color=#036635>Are there better alternatives?</h2></font>
   <h4>
   Perhaps your menu item of interest has <font color=#009933>too much
   </font> of something than your desired amount, but you <em>still
@@ -101,10 +101,10 @@ intro5 <-
   a caffeine information page for Starbucks consumers.
   We care about people's health and well being. Starbucks labels
   their caffeine in milligrams, however, most people do not know
-  how much that is. This is why we displayed the caffeine in amounts
+  how much that is. This is why we display the caffeine in amounts
   of expresso shots. Consumers have a better understanding of the side
-  affects of a single shot than 64 milligrams of caffeine. It will
-  allow consumers to choose their drinks based on the amount of caffeine
+  effects of a single shot (64 milligrams of caffeine). It
+  allows consumers to choose their drinks based on the amount of caffeine
   in each drink such as selecting drinks that best fit
   the situation they are in. If the consumer is going to sleep
   soon, they can choose drinks with low or no caffeine. If
@@ -113,4 +113,19 @@ intro5 <-
   Some of the starbucks drinks do not have a set amount of
   caffeine listed because it varies, but it is still
   worth knowing if a drink has caffeine or not.
+  </h4>"
+
+intro6 <-
+  "<h4>
+  You may want not only to drink coffee or something but also
+  grab some food in Starbucks. However, most people do not know how much a
+  particular nutrition is included in Starbucks foods
+  and which food is better or worse compared with another
+  food in terms of a specific ingredients.
+  Our comparison tool is for those who want to know that.
+  Only you have to do is select 2 menus from the list
+  and check the nutrition you are interested in. When you
+  have two foods that you want to try and can not make up your mind which
+  to buy, this comparison tool definitely helps you know which food
+  you should order for your health.
   </h4>"
