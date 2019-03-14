@@ -111,7 +111,7 @@ my_str <-
          <p>
          Starbucks is growing strong! As of 2017, it has <strong>",
          totalnum, "</strong> recorded locations worldwide, spreading across
-         <strong>", num_coun, "</strong>countries. For the sake of tidiness,
+         <strong>", num_coun, "</strong> countries. For the sake of tidiness,
          <br>
          the tables shown below are limited to only display the top ten
          countries and cities that have the most Starbucks stores respectively.
