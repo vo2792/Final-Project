@@ -27,14 +27,14 @@ intro <- tabPanel(
 )
 
 # string for background (R reads the url wrongly when separated into two lines)
-background <- "https://linkbookmarking.com/wp-content/uploads/2018/08/high_quality_wallpaper_HD_1080_IDS_1172781.jpg"
+#background <- "image/wood-background.jpeg"
 
 # first page
 tab_one <- tabPanel(
   # tab naming
   "Map",
 
-  setBackgroundImage(),
+  #setBackgroundImage(background),
   # title of tab
   includeCSS("styles.css"),
   headerPanel("Location in Each Country"),
@@ -102,7 +102,7 @@ tab_two <- tabPanel(
       dataTableOutput("table")
     )
   ),
-  h2("Comparison of Drink Categories"),
+  HTML("<h1>Comparison of Drink Categories</h1>"),
   sidebarLayout(
     sidebarPanel(
       selectInput(
@@ -118,6 +118,7 @@ tab_two <- tabPanel(
   )
 )
 
+# third page
 tab_three <- tabPanel(
   "Caffeine", # label for the tab in the navbar
   headerPanel("Measurement of Caffeine in Expresso Shots"), # show with a displayed title
@@ -144,7 +145,7 @@ tab_three <- tabPanel(
   )
 )
  
-# third page
+# fourth page
 tab_four <- tabPanel(
   # tab naming
   "Food",
@@ -177,7 +178,7 @@ tab_four <- tabPanel(
   )
 )
 
-# fourth tab
+# fifth tab
 tab_five <- tabPanel(
   # tab naming
   "Food comparison",

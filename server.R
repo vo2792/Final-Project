@@ -9,8 +9,6 @@ source("prepare_food_comparison.R")
 
 shinyServer(function(input, output) {
   # render the first object defined in tab_one
-  ## todo:
-  ## output$SOME_NAME_ONE <-
   filtered <- reactive({
     directory <- directory[(directory$Ownership.Type %in% input$check), ]
     directory %>%
@@ -46,8 +44,6 @@ shinyServer(function(input, output) {
   }, caption = "Rank by City")
 
   # render the second object defined in tab two
-  ## todo:
-  ## output$SOME_NAME_TWO <-
   filtered2 <- reactive({
     if(input$drink == "All") {
       drinks %>%
@@ -65,8 +61,6 @@ shinyServer(function(input, output) {
   })
 
   # render the third object defined in tab three
-  ## todo:
-  ##output$SOME_NAME_THREE <-
   filtered3 <- reactive({
     if(input$choice == "All") {
       food %>%
@@ -121,8 +115,6 @@ shinyServer(function(input, output) {
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
   })
   # render the fourth object defined in tab three
-  ## todo:
-  ##output$SOME_NAME_FOUR <-
   filtered4 <- reactive({
     foods <- foods %>% filter(Food == input$food_1 | Food == input$food_2)
     foods
@@ -143,6 +135,7 @@ shinyServer(function(input, output) {
                                  fill = Beverage_Category)) +
       labs(title = "Trends in Each Drink Category",
            x = "Beverage Category", y = input$category) +
+      ggthemes::theme_solarized() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
     plot
   })

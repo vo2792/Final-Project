@@ -74,14 +74,19 @@ and the effects they have on the user's overall health. Since there
 are <strong>", totalnum, "</strong> total recorded Starbucks stores
 in the world, it can be difficult to keep track of each one. 
 Interestingly, according to our datasets, some stores are <font
-color=red> not licensed </font>, which can be a concern for some 
+<<<<<<< HEAD
+color=red> not licensed</font>, which can be a concern for some 
+consumers. Our map is able to display <font color=#999900> the 
+=======
+color=#ff0000>not licensed</font>, which can be a concern for some 
 consumers. Our map is able to display <font color=#00b3b3>the 
+>>>>>>> 6ed1497a371529be6938862e7512c2cf7defaf83
 number of Starbucks in each country, pinpoint the name and exact 
 locations of every store, and filter out attributes of each store
 </font> (e.g. whether they are licensed or not). While we understand 
-that a daily intake of coffee (depending on the amount) can have <em><a href=https://www.aarp.org/health/healthy-living/info-10-2013/coffee-for-health.html>
+that a daily intake of coffee (depending on the amount) can have<em><a href=https://www.aarp.org/health/healthy-living/info-10-2013/coffee-for-health.html>
 negative effects </a></em> on one's body, especially if the 
-particular coffee beverage contains <font color=red> 
+particular coffee beverage contains <font color=#ff0000> 
 sugar, artificial sweeteners, etc.</font>, we want to focus 
 on how Starbucks consumers can rely on our application to provide 
 the majority of information they need in <font color=#00b3b3>one 
@@ -93,26 +98,26 @@ of a certain nutritional item).
 </h4>")
 
 intro3 <- "<h4>
-<font color=#00b3b3> Curious about the distributions of Starbucks
-establishments from country to country? </font> With our map, you 
-are able to <em> select </em> a country of your choice to 
+<font color=#00b3b3>Curious about the distributions of Starbucks
+establishments from country to country?</font> With our map, you 
+are able to <em>select</em> a country of your choice to 
 view the number and distribution of Starbucks stores in that 
-country. <em> Click </em> on the circle related to your 
+country. <em>Click</em> on the circle related to your 
 region of preference or manually zoom into the map if you'd like 
 to see more specified distributions. If you'd like to know the 
 <font color=#00b3b3>total number of Starbucks</font> in that 
 country, just zoom out until there remains one circle. 
 </h4>
 <h4>
-We have provided a <em> filter </em> option that will allow you 
+We have provided a <em>filter</em> option that will allow you 
 to narrow down the number of stores displayed on the map specific
 to your interest.
 </h4>"
 
 intro4 <- "<h4>
-We've implemented tables of the <font color=#00b3b3> entire food 
+We've implemented tables of the <font color=#00b3b3>entire food 
 and drink menu</font>, including some general and specified plots,
-<font color=#00b33c> all </font> of which are <em>interactive</em>.
+<font color=#00b33c>all</font> of which are <em>interactive</em>.
 Meaning, that you can <font color=#00b3b3>pick and choose</font> the 
 nutritional category of your interest and the data will be 
 filtered to display your choices. The tables also include multiple
@@ -121,7 +126,7 @@ find your drink and nutritional facts of interest.
 </h4>
 <h3><font color=#036635>Are there better alternatives?</h3></font>
 <h4>
-Perhaps your menu item of interest has <font color=red>too much
+Perhaps your menu item of interest has <font color=#ff0000>too much
 </font> of something than your desired amount, but you <em>still
 </em> want an item within the same category. Our tables are able 
 to help you. Just click the category of your choice, filter and 

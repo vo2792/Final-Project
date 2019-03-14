@@ -2,7 +2,8 @@ library(tidyverse)
 
 # Load datasets
 directory <- read.csv("data/directory.csv", stringsAsFactors = F)
-abbr <- read.csv("data/wikipedia-iso-country-codes.csv", stringsAsFactors = F) %>%
+abbr <- read.csv("data/wikipedia-iso-country-codes.csv",
+                 stringsAsFactors = F) %>%
   rename("Country" = "Alpha.2.code",
          "country_name" = "English.short.name.lower.case")
 
@@ -115,7 +116,7 @@ my_str <-
          the tables shown below are limited to only display the top ten
          countries and cities that have the most Starbucks stores respectively.
          <br>
-         <em>", top_country,"</em> stays on top of the record for having
+         <em>", top_country, "</em> stays on top of the record for having
          <strong>", num_top_country, "</strong> stores, followed by <em>",
          second_country, "</em> where it has <strong>", num_second_country,
          "</strong> stores across the country.
@@ -124,14 +125,14 @@ my_str <-
          only <strong>", num_least_country, "</strong> Starbucks location across
          the country. Another interesting side to look at is the number
          <br>
-         of stores each city has. <em>Shanghai</em> tops the list by having 
+         of stores each city has. <em>Shanghai</em> tops the list by having
          <strong>", num_top_city, "</strong> stores. In the meantime, there are
-         <em>", num_city_one_store, " cities </em> with only <strong>1</strong> 
+         <em>", num_city_one_store, " cities </em> with only <strong>1</strong>
          Starbucks store.
          </p>
          <p>Another interesting fact observed from the dataset is that
          <em>", aus, "</em> despite spanning 2.97 millions square miles
-         only has <strong>", num_aus, "</strong> Starbucks's locations, 
+         only has <strong>", num_aus, "</strong> Starbucks's locations,
          <br>
          which may be worth investigating why Starbucks is not expanding
          well in Australia.
