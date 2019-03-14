@@ -106,7 +106,8 @@ ownerships <- unique(directory$Ownership.Type)
 
 # HTML scripts
 my_str <-
-  paste0("<p>
+  paste0("<div class=board>
+         <p>
          Starbucks is growing strong! As of 2017, it has <strong>",
          totalnum, "</strong> recorded locations worldwide, spreading across
          <strong>", num_coun, "</strong>countries. For the sake of tidiness,
@@ -138,4 +139,5 @@ my_str <-
          <p>
          There are definitely many more things to be explored. Feel free
          to play around with the map and discover your own findings!
-         </p>")
+         </p>
+         </div>")
