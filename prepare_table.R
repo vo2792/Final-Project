@@ -38,6 +38,19 @@ colnames(categories) <- c(
   "Calcium_DV", "Iron_DV", "Caffeine_mg"
 )
 
+readable <- list(
+  "Calories", 
+  "Total Fat(g)" = "Total_Fat_g",
+  "Trans Fat(g)" = "Trans_Fat_g",
+  "Saturated Fat(g)" = "Saturated_Fat_g", 
+  "Sodium(mg)" = "Sodium_mg", 
+  "Total Carbohydrates(g)" = "Total_Carbohydrates_g",
+  "Cholesterol(mg)" = "Cholesterol_mg", 
+  "Dietary Fiber(g)" = "Dietary_Fiber_g", 
+  "Sugars(g)" = "Sugars_g",
+  "Protein(g)" = "Protein_g"
+)
+
 items <- as.character(food$Food)
 items <- sort(items)
 items <- c("All", items)

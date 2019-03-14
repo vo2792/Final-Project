@@ -133,8 +133,8 @@ tab_two <- tabPanel(
       selectInput(
         "category",
         label = "Drink Category",
-        choices = colnames(categories)[4:13],
-        selected = colnames(categories)[4]
+        choices = readable,
+        selected = readable[1]
       )
     ),
 
