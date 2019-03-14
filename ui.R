@@ -22,7 +22,9 @@ intro <- tabPanel(
     HTML(intro4),
     HTML("<h2><font color=#036635>How much caffeine are you consuming
          in each drink?</h2></font>"),
-    HTML(intro5)
+    HTML(intro5),
+    HTML("<h2><font color=#036635>Which food has more/less nutritions?</h2></font>"),
+    HTML(intro6)
   )
 )
 
