@@ -89,14 +89,15 @@ shinyServer(function(input, output) {
         x = Beverage, y = num_expresso_shot,
         fill = Beverage
       )) +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       labs(
         title = paste(
           "Amount of Caffeine Measured in Expresso Shots for", input$drink_type
         ), # plot title
         x = input$drink_type, # x-axis label
         y = "Amount of Caffeine Measured in Expresso Shots"
-      )
+      ) +
+      ggthemes::theme_solarized() +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 
   })
   output$table4 <- renderDataTable({
@@ -109,14 +110,15 @@ shinyServer(function(input, output) {
         x = Beverage_Category, y = avg_expresso_shot,
         fill = Beverage_Category
       )) +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       labs(
         title = paste(
           "Average Amount of Caffeine Measured in Shots for Each Beverage Category"
         ), # plot title
         x = "Beverage Categories", # x-axis label
         y = "Amount of Caffeine Measured in Shots " # y-axis label
-      )
+      ) +
+      ggthemes::theme_solarized() +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1))
   })
   # render the fourth object defined in tab three
   ## todo:

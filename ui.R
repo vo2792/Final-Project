@@ -117,7 +117,7 @@ tab_two <- tabPanel(
 
 tab_three <- tabPanel(
   "Caffeine", # label for the tab in the navbar
-  h2("Measurement of Caffeine in Expresso Shots"), # show with a displayed title
+  headerPanel("Measurement of Caffeine in Expresso Shots"), # show with a displayed title
 # This content uses a sidebar layout
   sidebarLayout(
     sidebarPanel(
