@@ -1,7 +1,8 @@
-library(shiny)
-library(leaflet)
-library(shinyWidgets)
+library("shiny")
+library("leaflet")
+library("shinyWidgets")
 
+source("intro.R")
 source("prepare_map.R")
 source("prepare_table.R")
 source("prepare_food_comparison.R")
@@ -22,19 +23,22 @@ intro <- tabPanel(
     HTML(intro4),
     HTML("<h2><font color=#036635>How much caffeine are you consuming
          in each drink?</h2></font>"),
-    HTML(intro5)
+    HTML(intro5),
+    HTML("<h2><font color=#036635>Which food has more/less nutritions?</h2>
+         </font>"),
+    HTML(intro6)
   )
 )
 
 # string for background (R reads the url wrongly when separated into two lines)
-#background <- "image/wood-background.jpeg"
+background <- "wood.png"
 
 # first page
 tab_one <- tabPanel(
   # tab naming
   "Map",
 
-  #setBackgroundImage(background),
+  setBackgroundImage(background),
   # title of tab
   includeCSS("styles.css"),
   headerPanel("Location in Each Country"),
@@ -49,14 +53,16 @@ tab_one <- tabPanel(
         choices = select_values,
         selected = "United States Of America"
       ),
-      
+
       checkboxGroupInput(
         inputId = "check",
         label = "Ownership Type",
-        choices = list("Licensed" = ownerships[1],
-                       "Joint Venture" = ownerships[2],
-                       "Company Owned" = ownerships[3],
-                       "Franchise" = ownerships[4]),
+        choices = list(
+          "Licensed" = ownerships[1],
+          "Joint Venture" = ownerships[2],
+          "Company Owned" = ownerships[3],
+          "Franchise" = ownerships[4]
+        ),
         selected = ownerships
       )
     ),
@@ -70,20 +76,20 @@ tab_one <- tabPanel(
         HTML(my_str),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
-        )
+      )
     )
   )
 )
 
 # second page
 tab_two <- tabPanel(
-# tab naming
+  # tab naming
   "Drinks",
-# title of tab
+  # title of tab
   headerPanel("Drink Nutritional Facts"),
-# sidebar layout
+  # sidebar layout
   sidebarLayout(
-     # sidebar panel
+    # sidebar panel
     sidebarPanel(
       selectInput(
         inputId = "drink",
@@ -95,7 +101,7 @@ tab_two <- tabPanel(
         inputId = "filter",
         label = "Filter:",
         choices = colnames(drinks)[4:18],
-        selected = colnames(drinks)[4:18]
+        selected = colnames(drinks)[c(4, 5, 9, 13)]
       )
     ),
     mainPanel(
@@ -120,10 +126,18 @@ tab_two <- tabPanel(
 
 # third page
 tab_three <- tabPanel(
+<<<<<<< HEAD
   "Caffeine", # label for the tab in the navbar
   headerPanel("Measurement of Caffeine in Expresso Shots"), # show with a
   #displayed title
 # This content uses a sidebar layout
+=======
+  # label for the tab in the navbar
+  "Caffeine",
+  # show with a displayed title
+  headerPanel("Measurement of Caffeine in Expresso Shots"),
+  # This content uses a sidebar layout
+>>>>>>> 2b7d533a9d42539745f3f23b99eaca915e24e726
   sidebarLayout(
     sidebarPanel(
       selectInput(
@@ -135,6 +149,7 @@ tab_three <- tabPanel(
     ),
     mainPanel(
       plotOutput("bargraph3"),
+<<<<<<< HEAD
       h3("Caffeine Varies in These Drinks"),
       plotOutput("bar_graph5"),
       p("This bar graph just gives an estimated comparison between
@@ -142,17 +157,26 @@ tab_three <- tabPanel(
              It does not include data on drinks that do not have a set 
              amount of caffeine because it varies."),
       dataTableOutput("table4")
+=======
+      HTML("<h1>Caffeine Varies in These Drinks</h1>"),
+      dataTableOutput("table4"),
+      plotOutput("bar_graph5"),
+      p("This bar graph just gives an estimated comparison between
+             which type of Starbucks drink typically have more caffeine.
+             It does not include data on drinks that do not have a set
+             amount of caffeine because it varies.")
+>>>>>>> 2b7d533a9d42539745f3f23b99eaca915e24e726
     )
   )
 )
- 
+
 # fourth page
 tab_four <- tabPanel(
   # tab naming
   "Food",
   # title of tab
   headerPanel("Food Nutritional Facts"),
-  
+
   # sidebar layout
   sidebarLayout(
     # sidebar panel
@@ -173,7 +197,6 @@ tab_four <- tabPanel(
     ),
     # give a name to be passed to the server(output)
     mainPanel(
-      # plotlyOutput("name")
       dataTableOutput("table2")
     )
   )
@@ -183,10 +206,10 @@ tab_four <- tabPanel(
 tab_five <- tabPanel(
   # tab naming
   "Food comparison",
-  
+
   # title of tab
   headerPanel("Which food contains more..?"),
-  
+
   # sidebar layout
   sidebarLayout(
     # sidebar panel
@@ -198,21 +221,21 @@ tab_five <- tabPanel(
         choices = item,
         selected = "Chonga Bagel"
       ),
-      
+
       selectInput(
         inputId = "food_2",
         label = "Select another food you want to try",
         choices = item,
         selected = "8-Grain Roll"
       ),
-      
+
       radioButtons(
         inputId = "nutrition",
         label = "Compared by",
-        choices = list("Calories","Fat","Carb","Fiber","Protein")
+        choices = list("Calories", "Fat", "Carb", "Fiber", "Protein")
       )
     ),
-    
+
     # give a name to be passed to the server(output)
     mainPanel(
       plotOutput("food")
@@ -225,20 +248,19 @@ shinyUI(navbarPage(
   strong("Starbucks"),
   # introduction
   intro,
-  
+
   # first tab
   tab_one,
-  
+
   # second tab
   tab_two,
-  
+
   # third tab
   tab_three,
-  
+
   # fourth tab
   tab_four,
-  
+
   # fifth tab
   tab_five
 ))
-

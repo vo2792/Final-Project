@@ -13,39 +13,52 @@ shinyServer(function(input, output) {
     directory <- directory[(directory$Ownership.Type %in% input$check), ]
     directory %>%
       filter(country_name == input$search) %>%
-      mutate(description = paste("City:<b>", City, "</b><br>",
-                                 "Store Name:<b>", Store.Name, "</b><br>"))
+      mutate(description = paste(
+        "City:<b>", City, "</b><br>",
+        "Store Name:<b>", Store.Name, "</b><br>"
+      ))
   })
 
+  # visualization of map
   output$map <- renderLeaflet({
-    starbucks_icon <- makeIcon(iconUrl = "starbucks.png",
-                               iconWidth = 30,
-                               iconHeight = 30)
+    starbucks_icon <- makeIcon(
+      iconUrl = "image/starbucks.png",
+      iconWidth = 30,
+      iconHeight = 30
+    )
 
     leaflet(data = filtered()) %>%
       addTiles() %>%
-      addMarkers(lat = ~Latitude,
-                 lng = ~Longitude,
-                 icon = starbucks_icon,
-                 label = ~lapply(description, HTML),
-                 clusterOptions = markerClusterOptions())
+      addMarkers(
+        lat = ~Latitude,
+        lng = ~Longitude,
+        icon = starbucks_icon,
+        label = ~ lapply(description, HTML),
+        clusterOptions = markerClusterOptions()
+      )
   })
 
+  # visualization of rank-by-world table
   output$rankworld <- renderTable({
     rank_world %>%
       top_n(10) %>%
       rename("Country" = country_name, "Num of Stores" = totalstores)
-    }, caption = "Rank by Country")
+  },
+  caption = "Rank by Country"
+  )
 
+  # visualization of rank-by-city table
   output$rankcity <- renderTable({
     rank_city %>%
       top_n(10) %>%
       rename("City" = City, "Num of Stores" = totalstores)
-  }, caption = "Rank by City")
+  },
+  caption = "Rank by City"
+  )
 
   # render the second object defined in tab two
   filtered2 <- reactive({
-    if(input$drink == "All") {
+    if (input$drink == "All") {
       drinks %>%
         select(Beverage_Category, Beverage, Beverage_Prep, input$filter)
     }
@@ -62,7 +75,7 @@ shinyServer(function(input, output) {
 
   # render the third object defined in tab three
   filtered3 <- reactive({
-    if(input$choice == "All") {
+    if (input$choice == "All") {
       food %>%
         select(Food, input$specify)
     } else {
@@ -92,8 +105,7 @@ shinyServer(function(input, output) {
         y = "Amount of Caffeine Measured in Expresso Shots"
       ) +
       ggthemes::theme_solarized() +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-
+      theme(axis.text.x = element_text(angle = 90, hjust = 1))
   })
   output$table4 <- renderDataTable({
     select(caffeine_varies, Beverage_Category, Beverage_name)
@@ -116,6 +128,7 @@ shinyServer(function(input, output) {
       ggthemes::theme_solarized() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
   })
+
   # render the fourth object defined in tab three
   filtered4 <- reactive({
     foods <- foods %>% filter(Food == input$food_1 | Food == input$food_2)
@@ -132,11 +145,15 @@ shinyServer(function(input, output) {
 
   output$boxplot <- renderPlot({
     plot <- ggplot(drinks) +
-      geom_boxplot(mapping = aes(x = Beverage_Category,
-                                 y = Calories,
-                                 fill = Beverage_Category)) +
-      labs(title = "Trends in Each Drink Category",
-           x = "Beverage Category", y = input$category) +
+      geom_boxplot(mapping = aes(
+        x = Beverage_Category,
+        y = Calories,
+        fill = Beverage_Category
+      )) +
+      labs(
+        title = "Trends in Each Drink Category",
+        x = "Beverage Category", y = input$category
+      ) +
       ggthemes::theme_solarized() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
     plot
