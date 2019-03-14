@@ -1,5 +1,6 @@
 library("shiny")
 library("leaflet")
+library("plotly")
 library("shinyWidgets")
 
 source("intro.R")
@@ -254,7 +255,7 @@ tab_five <- tabPanel(
 
     # give a name to be passed to the server(output)
     mainPanel(
-      plotOutput("food")
+      plotlyOutput("food")
     )
   )
 )
