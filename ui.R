@@ -12,6 +12,7 @@ intro <- tabPanel(
   # tab name - introduction
   "Introduction",
 
+  class = "layer",
   fluidPage(
     HTML("<h1>The Starbucks Project</h1>"),
     HTML("<h2><font color=#036635>Welcome to our Site!</font></h2>"),
