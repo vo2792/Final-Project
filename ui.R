@@ -5,6 +5,7 @@ library(shinyWidgets)
 source("prepare_map.R")
 source("prepare_table.R")
 source("prepare_food_comparison.R")
+source("intro.R")
 
 # introduction
 intro <- tabPanel(
@@ -23,7 +24,8 @@ intro <- tabPanel(
     HTML("<h2><font color=#036635>How much caffeine are you consuming
          in each drink?</h2></font>"),
     HTML(intro5),
-    HTML("<h2><font color=#036635>Which food has more/less nutritions?</h2></font>"),
+    HTML("<h2><font color=#036635>Which food has more/less nutritions?</h2>
+         </font>"),
     HTML(intro6)
   )
 )
