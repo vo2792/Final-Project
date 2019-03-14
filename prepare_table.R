@@ -75,19 +75,16 @@ and the effects they have on the user's overall health. Since there
 are <strong>", totalnum, "</strong> total recorded Starbucks stores
 in the world, it can be difficult to keep track of each one. 
 Interestingly, according to our datasets, some stores are <font
-<<<<<<< HEAD
 color=red> not licensed</font>, which can be a concern for some 
-consumers. Our map is able to display <font color=#999900> the 
-=======
-color=#ff0000>not licensed</font>, which can be a concern for some 
+consumers. Our map is able to display <font color=#999900></font>, 
+which can be a concern for some 
 consumers. Our map is able to display <font color=#00b3b3>the 
->>>>>>> 6ed1497a371529be6938862e7512c2cf7defaf83
 number of Starbucks in each country, pinpoint the name and exact 
 locations of every store, and filter out attributes of each store
 </font> (e.g. whether they are licensed or not). While we understand 
 that a daily intake of coffee (depending on the amount) can have<em><a href=https://www.aarp.org/health/healthy-living/info-10-2013/coffee-for-health.html>
 negative effects </a></em> on one's body, especially if the 
-particular coffee beverage contains <font color=#ff0000> 
+particular coffee beverage contains <font color=red> 
 sugar, artificial sweeteners, etc.</font>, we want to focus 
 on how Starbucks consumers can rely on our application to provide 
 the majority of information they need in <font color=#00b3b3>one 
@@ -127,7 +124,7 @@ find your drink and nutritional facts of interest.
 </h4>
 <h3><font color=#036635>Are there better alternatives?</h3></font>
 <h4>
-Perhaps your menu item of interest has <font color=#ff0000>too much
+Perhaps your menu item of interest has <font color=red>too much
 </font> of something than your desired amount, but you <em>still
 </em> want an item within the same category. Our tables are able 
 to help you. Just click the category of your choice, filter and 
