@@ -2,10 +2,10 @@ library(shiny)
 library(leaflet)
 library(shinyWidgets)
 
+source("intro.R")
 source("prepare_map.R")
 source("prepare_table.R")
 source("prepare_food_comparison.R")
-source("intro.R")
 
 # introduction
 intro <- tabPanel(
