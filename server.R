@@ -77,7 +77,8 @@ shinyServer(function(input, output) {
   })
 
   output$bargraph3 <- renderPlot({
-    filtered_data <- filter(caffeine_data_num, Beverage_Category == input$drink_type)
+    filtered_data <- filter(caffeine_data_num, Beverage_name ==
+      input$drink_type)
     ggplot(data = filtered_data) +
       geom_col(mapping = aes(
         x = Beverage, y = num_expresso_shot,
@@ -95,7 +96,7 @@ shinyServer(function(input, output) {
 
   })
   output$table4 <- renderDataTable({
-    select(caffeine_varies, Beverage_Category, Beverage)
+    select(caffeine_varies, Beverage_Category, Beverage_name)
   })
 
   output$bar_graph5 <- renderPlot({
@@ -106,7 +107,8 @@ shinyServer(function(input, output) {
       )) +
       labs(
         title = paste(
-          "Average Amount of Caffeine Measured in Shots for Each Beverage Category"
+          "Average Amount of Caffeine Measured in Shots for Each Beverage
+          Category"
         ), # plot title
         x = "Beverage Categories", # x-axis label
         y = "Amount of Caffeine Measured in Shots " # y-axis label
