@@ -31,7 +31,8 @@ caffeine_data <- drinks %>%
   select(Beverage_Category, Beverage, `Caffeine(mg)`)
 
 #There are 64mg of caffeine in each shot of espresso.
-caffeine_data$num_expresso_shot <- round(as.numeric(caffeine_data$`Caffeine(mg)`) / 64, digits = 2)
+caffeine_data$num_expresso_shot <-
+  round(as.numeric(caffeine_data$`Caffeine(mg)`) / 64, digits = 2)
 
 caffeine_varies <- filter(caffeine_data, is.na(caffeine_data$num_expresso_shot))
 caffeine_data_num <- filter(caffeine_data, !is.na(caffeine_data$num_expresso_shot))

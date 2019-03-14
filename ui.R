@@ -124,9 +124,11 @@ tab_two <- tabPanel(
 
 # third page
 tab_three <- tabPanel(
-  "Caffeine", # label for the tab in the navbar
-  headerPanel("Measurement of Caffeine in Expresso Shots"), # show with a displayed title
-# This content uses a sidebar layout
+  # label for the tab in the navbar
+  "Caffeine",
+  # show with a displayed title
+  headerPanel("Measurement of Caffeine in Expresso Shots"),
+  # This content uses a sidebar layout
   sidebarLayout(
     sidebarPanel(
       selectInput(

@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
 
   # visualization of map
   output$map <- renderLeaflet({
-    starbucks_icon <- makeIcon(iconUrl = "starbucks.png",
+    starbucks_icon <- makeIcon(iconUrl = "image/starbucks.png",
                                iconWidth = 30,
                                iconHeight = 30)
 
@@ -80,7 +80,8 @@ shinyServer(function(input, output) {
   })
 
   output$bargraph3 <- renderPlot({
-    filtered_data <- filter(caffeine_data_num, Beverage_Category == input$drink_type)
+    filtered_data <- filter(caffeine_data_num,
+                            Beverage_Category == input$drink_type)
     ggplot(data = filtered_data) +
       geom_col(mapping = aes(
         x = Beverage, y = num_expresso_shot,
