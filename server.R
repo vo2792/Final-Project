@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
 
   # visualization of map
   output$map <- renderLeaflet({
-    starbucks_icon <- makeIcon(iconUrl = "starbucks.png",
+    starbucks_icon <- makeIcon(iconUrl = "image/starbucks.png",
                                iconWidth = 30,
                                iconHeight = 30)
 
