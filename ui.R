@@ -99,6 +99,7 @@ tab_two <- tabPanel(
       dataTableOutput("table")
     )
   ),
+  h2("Comparison of Drink Categories"),
   sidebarLayout(
     sidebarPanel(
       selectInput(
@@ -111,9 +112,12 @@ tab_two <- tabPanel(
     mainPanel(
       plotOutput("boxplot")
     )
-  ),
-"Measuring Caffeine", # label for the tab in the navbar
-  h2("Measuing Caffeine in Expresso Shots"), # show with a displayed title
+  )
+)
+
+tab_three <- tabPanel(
+  "Caffeine", # label for the tab in the navbar
+  h2("Measurement of Caffeine in Expresso Shots"), # show with a displayed title
 # This content uses a sidebar layout
   sidebarLayout(
     sidebarPanel(
@@ -138,7 +142,7 @@ tab_two <- tabPanel(
 )
  
 # third page
-tab_three <- tabPanel(
+tab_four <- tabPanel(
   # tab naming
   "Food",
   # title of tab
@@ -171,7 +175,7 @@ tab_three <- tabPanel(
 )
 
 # fourth tab
-tab_four <- tabPanel(
+tab_five <- tabPanel(
   # tab naming
   "Food comparison",
   
@@ -227,6 +231,9 @@ shinyUI(navbarPage(
   tab_three,
   
   # fourth tab
-  tab_four
+  tab_four,
+  
+  # fifth tab
+  tab_five
 ))
 
