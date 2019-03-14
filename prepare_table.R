@@ -74,12 +74,12 @@ and the effects they have on the user's overall health. Since there
 are <strong>", totalnum, "</strong> total recorded Starbucks stores
 in the world, it can be difficult to keep track of each one. 
 Interestingly, according to our datasets, some stores are <font
-color=red> not licensed </font>, which can be a concern for some 
+color=red> not licensed</font>, which can be a concern for some 
 consumers. Our map is able to display <font color=#999900> the 
 number of Starbucks in each country, pinpoint the name and exact 
 locations of every store, and filter out attributes of each store 
 </font> (e.g. whether they are licensed or not). While we understand 
-that a daily intake of coffee (depending on the amount) can have <em><a href=https://www.aarp.org/health/healthy-living/info-10-2013/coffee-for-health.html>
+that a daily intake of coffee (depending on the amount) can have<em><a href=https://www.aarp.org/health/healthy-living/info-10-2013/coffee-for-health.html>
 negative effects </a></em> on one's body, especially if the 
 particular coffee beverage contains <strong><font color=#992600> 
 sugar, artificial sweeteners, etc.</strong></font>, we want to focus 
