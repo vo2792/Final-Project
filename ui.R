@@ -1,6 +1,6 @@
-library(shiny)
-library(leaflet)
-library(shinyWidgets)
+library("shiny")
+library("leaflet")
+library("shinyWidgets")
 
 source("intro.R")
 source("prepare_map.R")
@@ -9,7 +9,10 @@ source("prepare_food_comparison.R")
 
 # introduction
 intro <- tabPanel(
+  # tab name - introduction
   "Introduction",
+
+  class = "layer",
   fluidPage(
     HTML("<h1>The Starbucks Project</h1>"),
     HTML("<h2><font color=#036635>Welcome to our Site!</font></h2>"),
@@ -38,56 +41,67 @@ tab_one <- tabPanel(
   # tab naming
   "Map",
 
+  # set background image
   setBackgroundImage(background),
+
   # title of tab
   includeCSS("styles.css"),
   headerPanel("Location in Each Country"),
+
   # sidebar layout
   sidebarLayout(
+
     # sidebar panel
     sidebarPanel(
+
       # inputs that we would like to implement (eg. selectInput, sliderInput)
+      # select input
       selectInput(
         inputId = "search",
         label = "Find a Country",
         choices = select_values,
         selected = "United States Of America"
       ),
-      
+
       checkboxGroupInput(
         inputId = "check",
         label = "Ownership Type",
-        choices = list("Licensed" = ownerships[1],
-                       "Joint Venture" = ownerships[2],
-                       "Company Owned" = ownerships[3],
-                       "Franchise" = ownerships[4]),
+        choices = list(
+          "Licensed" = ownerships[1],
+          "Joint Venture" = ownerships[2],
+          "Company Owned" = ownerships[3],
+          "Franchise" = ownerships[4]
+        ),
         selected = ownerships
       )
     ),
+
     # give a name to be passed to the server(output)
     mainPanel(
-      includeCSS("styles.css"),
       HTML("<h1>Interactive Map</h1>"),
       leafletOutput("map"),
       fluidRow(
-        HTML("<h1><font =>Some Insights</font></h1>"),
+        HTML("<h1>Some Insights</h1>"),
         HTML(my_str),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
-        )
+      )
     )
   )
 )
 
 # second page
 tab_two <- tabPanel(
-# tab naming
+  # tab naming
   "Drinks",
-# title of tab
+
+  # title of tab
   headerPanel("Drink Nutritional Facts"),
-# sidebar layout
+
+  # sidebar layout 1
   sidebarLayout(
-     # sidebar panel
+
+    # sidebar panel 1
     sidebarPanel(
       selectInput(
         inputId = "drink",
@@ -95,27 +109,35 @@ tab_two <- tabPanel(
         choices = types,
         selected = types[1]
       ),
+
       checkboxGroupInput(
         inputId = "filter",
         label = "Filter:",
         choices = colnames(drinks)[4:18],
-        selected = colnames(drinks)[4:18]
+        selected = colnames(drinks)[c(4, 5, 9, 13)]
       )
     ),
+
     mainPanel(
       dataTableOutput("table")
     )
   ),
+
   HTML("<h1>Comparison of Drink Categories</h1>"),
+
+  # sidebar layout 2
   sidebarLayout(
+
+    # sidebar panel 2
     sidebarPanel(
       selectInput(
         "category",
-        label = "Drink Category (for plot)",
-        choices = colnames(drinks)[4:18],
-        selected = colnames(drinks)[4]
+        label = "Drink Category",
+        choices = colnames(categories)[4:13],
+        selected = colnames(categories)[4]
       )
     ),
+
     mainPanel(
       plotOutput("boxplot")
     )
@@ -126,42 +148,51 @@ tab_two <- tabPanel(
 tab_three <- tabPanel(
   # label for the tab in the navbar
   "Caffeine",
+
   # show with a displayed title
   headerPanel("Measurement of Caffeine in Expresso Shots"),
+
   # This content uses a sidebar layout
   sidebarLayout(
+
+    # sidebar panel
     sidebarPanel(
       selectInput(
         inputId = "drink_type",
         label = "Beverage Category",
-        selected = types[1],
-        choices = types[2:10]
+        selected = "Coffee Short",
+        choices = caffeine_data_num$Beverage_name
       )
     ),
+
+    # main panel
     mainPanel(
       plotOutput("bargraph3"),
-      h3("Caffeine Varies in These Drinks"),
-      dataTableOutput("table4"),
       plotOutput("bar_graph5"),
       p("This bar graph just gives an estimated comparison between
-             which type of Starbucks drink typically have more caffeine.
-             It does not include data on drinks that do not have a set 
-             amount of caffeine because it varies.")
+         which type of Starbucks drink typically have more caffeine.
+         It does not include data on drinks that do not have a set
+         amount of caffeine because it varies."),
+      HTML("<h1>Caffeine Varies in These Drinks</h1>"),
+      dataTableOutput("table4")
     )
   )
 )
- 
+
 # fourth page
 tab_four <- tabPanel(
   # tab naming
   "Food",
+
   # title of tab
   headerPanel("Food Nutritional Facts"),
-  
+
   # sidebar layout
   sidebarLayout(
+
     # sidebar panel
     sidebarPanel(
+
       # inputs that we would like to implement (eg. selectInput, sliderInput)
       selectInput(
         inputId = "choice",
@@ -169,6 +200,7 @@ tab_four <- tabPanel(
         choices = items,
         selected = items[1]
       ),
+
       checkboxGroupInput(
         inputId = "specify",
         label = "Filter:",
@@ -176,9 +208,9 @@ tab_four <- tabPanel(
         selected = colnames(food)[2:6]
       )
     ),
+
     # give a name to be passed to the server(output)
     mainPanel(
-      # plotlyOutput("name")
       dataTableOutput("table2")
     )
   )
@@ -188,14 +220,16 @@ tab_four <- tabPanel(
 tab_five <- tabPanel(
   # tab naming
   "Food comparison",
-  
+
   # title of tab
   headerPanel("Which food contains more..?"),
-  
+
   # sidebar layout
   sidebarLayout(
+
     # sidebar panel
     sidebarPanel(
+
       # inputs that we would like to implement (eg. selectInput, sliderInput)
       selectInput(
         inputId = "food_1",
@@ -203,21 +237,21 @@ tab_five <- tabPanel(
         choices = item,
         selected = "Chonga Bagel"
       ),
-      
+
       selectInput(
         inputId = "food_2",
         label = "Select another food you want to try",
         choices = item,
         selected = "8-Grain Roll"
       ),
-      
+
       radioButtons(
         inputId = "nutrition",
         label = "Compared by",
-        choices = list("Calories","Fat","Carb","Fiber","Protein")
+        choices = list("Calories", "Fat", "Carb", "Fiber", "Protein")
       )
     ),
-    
+
     # give a name to be passed to the server(output)
     mainPanel(
       plotOutput("food")
@@ -228,22 +262,22 @@ tab_five <- tabPanel(
 # Final Project Shiny structure
 shinyUI(navbarPage(
   strong("Starbucks"),
+
   # introduction
   intro,
-  
+
   # first tab
   tab_one,
-  
+
   # second tab
   tab_two,
-  
+
   # third tab
   tab_three,
-  
+
   # fourth tab
   tab_four,
-  
+
   # fifth tab
   tab_five
 ))
-

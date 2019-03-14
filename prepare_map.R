@@ -1,11 +1,14 @@
-library(tidyverse)
+library("tidyverse")
 
 # Load datasets
 directory <- read.csv("data/directory.csv", stringsAsFactors = F)
 abbr <- read.csv("data/wikipedia-iso-country-codes.csv",
-                 stringsAsFactors = F) %>%
-  rename("Country" = "Alpha.2.code",
-         "country_name" = "English.short.name.lower.case")
+  stringsAsFactors = F
+) %>%
+  rename(
+    "Country" = "Alpha.2.code",
+    "country_name" = "English.short.name.lower.case"
+  )
 
 # Joint the datasets
 directory <- directory %>%
@@ -99,18 +102,13 @@ select_values <- unique(directory$country_name)
 # all types of ownerships
 ownerships <- unique(directory$Ownership.Type)
 
-# sanity check
-# directory %>%
-#   filter(Ownership.Type == "Licensed",
-#          Country == "US") %>%
-#   nrow()
-
 # HTML scripts
 my_str <-
-  paste0("<div class=board>
+  paste0(
+    "<div class=board>
          <p>
          Starbucks is growing strong! As of 2017, it has <strong>",
-         totalnum, "</strong> recorded locations worldwide, spreading across
+    totalnum, "</strong> recorded locations worldwide, spreading across
          <strong>", num_coun, "</strong> countries. For the sake of tidiness,
          <br>
          the tables shown below are limited to only display the top ten
@@ -118,8 +116,8 @@ my_str <-
          <br>
          <em>", top_country, "</em> stays on top of the record for having
          <strong>", num_top_country, "</strong> stores, followed by <em>",
-         second_country, "</em> where it has <strong>", num_second_country,
-         "</strong> stores across the country.
+    second_country, "</em> where it has <strong>", num_second_country,
+    "</strong> stores across the country.
          <br>
          For what's not shown on the table, <em>", least_country, "</em> has
          only <strong>", num_least_country, "</strong> Starbucks location across
@@ -141,4 +139,5 @@ my_str <-
          There are definitely many more things to be explored. Feel free
          to play around with the map and discover your own findings!
          </p>
-         </div>")
+         </div>"
+  )
