@@ -115,6 +115,7 @@ tab_two <- tabPanel(
   )
 )
 
+# third page
 tab_three <- tabPanel(
   "Caffeine", # label for the tab in the navbar
   headerPanel("Measurement of Caffeine in Expresso Shots"), # show with a displayed title
@@ -141,7 +142,7 @@ tab_three <- tabPanel(
   )
 )
  
-# third page
+# fourth page
 tab_four <- tabPanel(
   # tab naming
   "Food",
@@ -174,7 +175,7 @@ tab_four <- tabPanel(
   )
 )
 
-# fourth tab
+# fifth tab
 tab_five <- tabPanel(
   # tab naming
   "Food comparison",
