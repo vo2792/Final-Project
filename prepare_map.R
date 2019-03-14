@@ -1,4 +1,4 @@
-library(tidyverse)
+library("tidyverse")
 
 # Load datasets
 directory <- read.csv("data/directory.csv", stringsAsFactors = F)
@@ -130,8 +130,7 @@ my_str <-
          <em>", num_city_one_store, " cities </em> with only <strong>1</strong>
          Starbucks store.
          </p>
-         <p>
-         Another interesting fact observed from the dataset is that
+         <p>Another interesting fact observed from the dataset is that
          <em>", aus, "</em> despite spanning 2.97 millions square miles
          only has <strong>", num_aus, "</strong> Starbucks's locations,
          <br>

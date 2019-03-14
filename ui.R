@@ -68,11 +68,10 @@ tab_one <- tabPanel(
     ),
     # give a name to be passed to the server(output)
     mainPanel(
-      includeCSS("styles.css"),
       HTML("<h1>Interactive Map</h1>"),
       leafletOutput("map"),
       fluidRow(
-        HTML("<h1><font =>Some Insights</font></h1>"),
+        HTML("<h1>Some Insights</h1>"),
         HTML(my_str),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
@@ -126,18 +125,11 @@ tab_two <- tabPanel(
 
 # third page
 tab_three <- tabPanel(
-<<<<<<< HEAD
-  "Caffeine", # label for the tab in the navbar
-  headerPanel("Measurement of Caffeine in Expresso Shots"), # show with a
-  #displayed title
-# This content uses a sidebar layout
-=======
   # label for the tab in the navbar
   "Caffeine",
   # show with a displayed title
   headerPanel("Measurement of Caffeine in Expresso Shots"),
   # This content uses a sidebar layout
->>>>>>> 2b7d533a9d42539745f3f23b99eaca915e24e726
   sidebarLayout(
     sidebarPanel(
       selectInput(
@@ -149,23 +141,13 @@ tab_three <- tabPanel(
     ),
     mainPanel(
       plotOutput("bargraph3"),
-<<<<<<< HEAD
-      h3("Caffeine Varies in These Drinks"),
       plotOutput("bar_graph5"),
       p("This bar graph just gives an estimated comparison between
-             which type of Starbucks drink typically have more caffeine.
-             It does not include data on drinks that do not have a set 
-             amount of caffeine because it varies."),
-      dataTableOutput("table4")
-=======
+         which type of Starbucks drink typically have more caffeine.
+         It does not include data on drinks that do not have a set
+         amount of caffeine because it varies."),
       HTML("<h1>Caffeine Varies in These Drinks</h1>"),
-      dataTableOutput("table4"),
-      plotOutput("bar_graph5"),
-      p("This bar graph just gives an estimated comparison between
-             which type of Starbucks drink typically have more caffeine.
-             It does not include data on drinks that do not have a set
-             amount of caffeine because it varies.")
->>>>>>> 2b7d533a9d42539745f3f23b99eaca915e24e726
+      dataTableOutput("table4")
     )
   )
 )
