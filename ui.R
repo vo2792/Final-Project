@@ -101,7 +101,7 @@ tab_two <- tabPanel(
         inputId = "filter",
         label = "Filter:",
         choices = colnames(drinks)[4:18],
-        selected = colnames(drinks)[4:18]
+        selected = colnames(drinks)[c(4, 5, 9, 13)]
       )
     ),
     mainPanel(
@@ -142,7 +142,7 @@ tab_three <- tabPanel(
     ),
     mainPanel(
       plotOutput("bargraph3"),
-      h3("Caffeine Varies in These Drinks"),
+      HTML("<h1>Caffeine Varies in These Drinks</h1>"),
       dataTableOutput("table4"),
       plotOutput("bar_graph5"),
       p("This bar graph just gives an estimated comparison between
