@@ -31,7 +31,7 @@ colnames(drinks) <- c(
 
 colnames(categories) <- c(
   "Beverage_Category", "Beverage", "Beverage_Prep",
-  "Calories", "TotalFat", "Trans_Fat_g",
+  "Calories", "Total_Fat_g", "Trans_Fat_g",
   "Saturated_Fat_g", "Sodium_mg", "Total_Carbohydrates_g",
   "Cholesterol_mg", "Dietary_Fiber_g", "Sugars_g",
   "Protein_g", "Vitamin_A_DV", "Vitamin_C_DV",
