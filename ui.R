@@ -19,7 +19,10 @@ intro <- tabPanel(
          </font></h2>"),
     HTML(intro3),
     HTML("<h2><font color=#036635>What exactly are you consuming?</h2></font>"),
-    HTML(intro4)
+    HTML(intro4),
+    HTML("<h2><font color=#036635>How much caffeine are you consuming
+         in each drink?</h2></font>"),
+    HTML(intro5)
   )
 )
 

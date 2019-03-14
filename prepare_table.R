@@ -130,6 +130,27 @@ arrange the data, and choose the next best option. The
 and plots are what will ultimately save you, the consumer, time.
 </h4>"
 
+intro5 <- "<h4>
+Knowing how much caffeine you consume is important. There are
+many negative side effects for consuming too much caffeine, and
+some of the side effects are fast blood pressure,
+anxiety, addiction, death and more. This is why we provided
+a caffeine information page for Starbucks consumers. 
+We care about people's health and well being. Starbucks labels
+their caffeine in milligrams, however, most people do not know
+how much that is. This is why we displayed the caffeine in amounts
+of expresso shots. Consumers have a better understanding of the side
+affects of a single shot than 64 milligrams of caffeine. It will 
+allow consumers to choose their drinks based on the amount of caffeine
+in each drink such as selecting drinks that best fit
+the situation they are in. If the consumer is going to sleep 
+soon, they can choose drinks with low or no caffeine. If
+they are running low on sleep and is just getting their day 
+started, they can choose the drinks with higher caffeine. 
+Some of the starbucks drinks do not have a set amount of
+caffeine listed because it varies, but it is still
+worth knowing if a drink has caffeine or not.
+</h4>"
 
 
 
