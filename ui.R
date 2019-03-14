@@ -10,20 +10,31 @@ source("prepare_food_comparison.R")
 intro <- tabPanel(
   "Introduction",
   fluidPage(
-    h1("The Starbucks Project"),
-    HTML("<h1>Write a story!!!</h1>"),
-    HTML("<p>Consumerism</p>")
+    HTML("<h1>The Starbucks Project</h1>"),
+    HTML("<h2><font color=#036635>Welcome to our Site!</font></h2>"),
+    HTML(intro1),
+    HTML("<h2><font color=#036635>Who is our audience?</font></h2>"),
+    HTML(intro2),
+    HTML("<h2><font color=#036635>How many Starbucks are in each country?
+         </font></h2>"),
+    HTML(intro3),
+    HTML("<h2><font color=#036635>What exactly are you consuming?</h2></font>"),
+    HTML(intro4)
   )
 )
+
+# string for background (R reads the url wrongly when separated into two lines)
+background <- "https://linkbookmarking.com/wp-content/uploads/2018/08/high_quality_wallpaper_HD_1080_IDS_1172781.jpg"
 
 # first page
 tab_one <- tabPanel(
   # tab naming
   "Map",
 
-  setBackgroundImage("https://linkbookmarking.com/wp-content/uploads/2018/08/high_quality_wallpaper_HD_1080_IDS_1172781.jpg"),
+  setBackgroundImage(),
   # title of tab
-  titlePanel("Location in Each Country"),
+  includeCSS("styles.css"),
+  headerPanel("Location in Each Country"),
   # sidebar layout
   sidebarLayout(
     # sidebar panel
@@ -48,19 +59,12 @@ tab_one <- tabPanel(
     ),
     # give a name to be passed to the server(output)
     mainPanel(
-      HTML("<h1>A Map To Play</h1>"),
+      includeCSS("styles.css"),
+      HTML("<h1>Interactive Map</h1>"),
       leafletOutput("map"),
       fluidRow(
-        HTML("<h1><font color=#FBFF85>Some insights about the map</font></h1>"),
+        HTML("<h1><font =>Some Insights</font></h1>"),
         HTML(my_str),
-        HTML("<p>Another interesting fact observed from the dataset is that
-             <em>Australia</em> despite spanning 2.97 millions square miles
-             only has <strong>22</strong> Starbucks's locations, <br>
-             which may be worth investigating why Starbucks is not expanding
-             well in Australia.</p>"),
-        HTML("<p></p>
-             <p>There are definitely many more things to be explored. Feel free
-             to play around with the map and discover your own findings!</p>"),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
         )
@@ -73,7 +77,7 @@ tab_two <- tabPanel(
 # tab naming
   "Drinks",
 # title of tab
-  titlePanel("Drink Nutritional Facts"),
+  headerPanel("Drink Nutritional Facts"),
 # sidebar layout
   sidebarLayout(
      # sidebar panel
@@ -89,7 +93,15 @@ tab_two <- tabPanel(
         label = "Filter:",
         choices = colnames(drinks)[4:18],
         selected = colnames(drinks)[4:18]
-      ),
+      )
+    ),
+    mainPanel(
+      dataTableOutput("table")
+    )
+  ),
+  h2("Comparison of Drink Categories"),
+  sidebarLayout(
+    sidebarPanel(
       selectInput(
         "category",
         label = "Drink Category (for plot)",
@@ -98,42 +110,43 @@ tab_two <- tabPanel(
       )
     ),
     mainPanel(
-      dataTableOutput("table"),
       plotOutput("boxplot")
     )
-  ),
-"Measuring Caffeine", # label for the tab in the navbar
-h2("Measuing Caffeine in Expresso Shots"), # show with a displayed title
-# This content uses a sidebar layout
-sidebarLayout(
-  sidebarPanel(
-    selectInput(
-      inputId = "drink_type",
-      label = "Beverage Category",
-      selected = types[1],
-      choices = types[2:10]
-    )
-  ),
-  mainPanel(
-    plotOutput("bargraph3"),
-    h3("Caffeine Varies in These Drinks"),
-    dataTableOutput("table4"),
-    plotOutput("bar_graph5"),
-    p("This bar graph just gives an estimated comparison between
-           which type of Starbucks drink typically have more caffeine.
-           It does not include data on drinks that do not have a set 
-           amount of caffeine because it varies.")
   )
 )
 
+tab_three <- tabPanel(
+  "Caffeine", # label for the tab in the navbar
+  headerPanel("Measurement of Caffeine in Expresso Shots"), # show with a displayed title
+# This content uses a sidebar layout
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        inputId = "drink_type",
+        label = "Beverage Category",
+        selected = types[1],
+        choices = types[2:10]
+      )
+    ),
+    mainPanel(
+      plotOutput("bargraph3"),
+      h3("Caffeine Varies in These Drinks"),
+      dataTableOutput("table4"),
+      plotOutput("bar_graph5"),
+      p("This bar graph just gives an estimated comparison between
+             which type of Starbucks drink typically have more caffeine.
+             It does not include data on drinks that do not have a set 
+             amount of caffeine because it varies.")
+    )
+  )
 )
  
 # third page
-tab_three <- tabPanel(
+tab_four <- tabPanel(
   # tab naming
   "Food",
   # title of tab
-  titlePanel("Food Nutritional Facts"),
+  headerPanel("Food Nutritional Facts"),
   
   # sidebar layout
   sidebarLayout(
@@ -162,12 +175,12 @@ tab_three <- tabPanel(
 )
 
 # fourth tab
-tab_four <- tabPanel(
+tab_five <- tabPanel(
   # tab naming
   "Food comparison",
   
   # title of tab
-  titlePanel("Which food contains more..?"),
+  headerPanel("Which food contains more..?"),
   
   # sidebar layout
   sidebarLayout(
@@ -218,6 +231,9 @@ shinyUI(navbarPage(
   tab_three,
   
   # fourth tab
-  tab_four
+  tab_four,
+  
+  # fifth tab
+  tab_five
 ))
 
