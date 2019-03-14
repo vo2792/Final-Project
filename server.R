@@ -1,7 +1,8 @@
 # Load Libraries
-library(tidyverse)
-library(leaflet)
-library(shiny)
+library("tidyverse")
+library("leaflet")
+library("shiny")
+library("plotly")
 
 source("prepare_map.R")
 source("prepare_table.R")
@@ -141,12 +142,13 @@ shinyServer(function(input, output) {
     foods
   })
 
-  output$food <- renderPlot({
-    filtered4() %>%
+  output$food <- renderPlotly({
+    col_bar <- filtered4() %>%
       ggplot(aes_string(x = "Food", y = input$nutrition)) +
       geom_col(fill = "dark green", width = 0.3) +
       ggthemes::theme_solarized() +
       labs(x = "")
+    ggplotly(col_bar)
   })
 
   output$boxplot <- renderPlot({
