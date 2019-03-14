@@ -74,7 +74,7 @@ and the effects they have on the user's overall health. Since there
 are <strong>", totalnum, "</strong> total recorded Starbucks stores
 in the world, it can be difficult to keep track of each one. 
 Interestingly, according to our datasets, some stores are <font
-color=#ff0000> not licensed </font>, which can be a concern for some 
+color=#ff0000>not licensed</font>, which can be a concern for some 
 consumers. Our map is able to display <font color=#00b3b3>the 
 number of Starbucks in each country, pinpoint the name and exact 
 locations of every store, and filter out attributes of each store
@@ -93,26 +93,26 @@ of a certain nutritional item).
 </h4>")
 
 intro3 <- "<h4>
-<font color=#00b3b3> Curious about the distributions of Starbucks
-establishments from country to country? </font> With our map, you 
-are able to <em> select </em> a country of your choice to 
+<font color=#00b3b3>Curious about the distributions of Starbucks
+establishments from country to country?</font> With our map, you 
+are able to <em>select</em> a country of your choice to 
 view the number and distribution of Starbucks stores in that 
-country. <em> Click </em> on the circle related to your 
+country. <em>Click</em> on the circle related to your 
 region of preference or manually zoom into the map if you'd like 
 to see more specified distributions. If you'd like to know the 
 <font color=#00b3b3>total number of Starbucks</font> in that 
 country, just zoom out until there remains one circle. 
 </h4>
 <h4>
-We have provided a <em> filter </em> option that will allow you 
+We have provided a <em>filter</em> option that will allow you 
 to narrow down the number of stores displayed on the map specific
 to your interest.
 </h4>"
 
 intro4 <- "<h4>
-We've implemented tables of the <font color=#00b3b3> entire food 
+We've implemented tables of the <font color=#00b3b3>entire food 
 and drink menu</font>, including some general and specified plots,
-<font color=#00b33c> all </font> of which are <em>interactive</em>.
+<font color=#00b33c>all</font> of which are <em>interactive</em>.
 Meaning, that you can <font color=#00b3b3>pick and choose</font> the 
 nutritional category of your interest and the data will be 
 filtered to display your choices. The tables also include multiple
