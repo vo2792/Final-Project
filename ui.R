@@ -1,6 +1,6 @@
-library(shiny)
-library(leaflet)
-library(shinyWidgets)
+library("shiny")
+library("leaflet")
+library("shinyWidgets")
 
 source("prepare_map.R")
 source("prepare_table.R")
@@ -53,14 +53,16 @@ tab_one <- tabPanel(
         choices = select_values,
         selected = "United States Of America"
       ),
-      
+
       checkboxGroupInput(
         inputId = "check",
         label = "Ownership Type",
-        choices = list("Licensed" = ownerships[1],
-                       "Joint Venture" = ownerships[2],
-                       "Company Owned" = ownerships[3],
-                       "Franchise" = ownerships[4]),
+        choices = list(
+          "Licensed" = ownerships[1],
+          "Joint Venture" = ownerships[2],
+          "Company Owned" = ownerships[3],
+          "Franchise" = ownerships[4]
+        ),
         selected = ownerships
       )
     ),
@@ -74,20 +76,20 @@ tab_one <- tabPanel(
         HTML(my_str),
         column(6, tableOutput("rankworld")),
         column(6, tableOutput("rankcity"))
-        )
+      )
     )
   )
 )
 
 # second page
 tab_two <- tabPanel(
-# tab naming
+  # tab naming
   "Drinks",
-# title of tab
+  # title of tab
   headerPanel("Drink Nutritional Facts"),
-# sidebar layout
+  # sidebar layout
   sidebarLayout(
-     # sidebar panel
+    # sidebar panel
     sidebarPanel(
       selectInput(
         inputId = "drink",
@@ -145,19 +147,19 @@ tab_three <- tabPanel(
       plotOutput("bar_graph5"),
       p("This bar graph just gives an estimated comparison between
              which type of Starbucks drink typically have more caffeine.
-             It does not include data on drinks that do not have a set 
+             It does not include data on drinks that do not have a set
              amount of caffeine because it varies.")
     )
   )
 )
- 
+
 # fourth page
 tab_four <- tabPanel(
   # tab naming
   "Food",
   # title of tab
   headerPanel("Food Nutritional Facts"),
-  
+
   # sidebar layout
   sidebarLayout(
     # sidebar panel
@@ -178,7 +180,6 @@ tab_four <- tabPanel(
     ),
     # give a name to be passed to the server(output)
     mainPanel(
-      # plotlyOutput("name")
       dataTableOutput("table2")
     )
   )
@@ -188,10 +189,10 @@ tab_four <- tabPanel(
 tab_five <- tabPanel(
   # tab naming
   "Food comparison",
-  
+
   # title of tab
   headerPanel("Which food contains more..?"),
-  
+
   # sidebar layout
   sidebarLayout(
     # sidebar panel
@@ -203,21 +204,21 @@ tab_five <- tabPanel(
         choices = item,
         selected = "Chonga Bagel"
       ),
-      
+
       selectInput(
         inputId = "food_2",
         label = "Select another food you want to try",
         choices = item,
         selected = "8-Grain Roll"
       ),
-      
+
       radioButtons(
         inputId = "nutrition",
         label = "Compared by",
-        choices = list("Calories","Fat","Carb","Fiber","Protein")
+        choices = list("Calories", "Fat", "Carb", "Fiber", "Protein")
       )
     ),
-    
+
     # give a name to be passed to the server(output)
     mainPanel(
       plotOutput("food")
@@ -230,20 +231,19 @@ shinyUI(navbarPage(
   strong("Starbucks"),
   # introduction
   intro,
-  
+
   # first tab
   tab_one,
-  
+
   # second tab
   tab_two,
-  
+
   # third tab
   tab_three,
-  
+
   # fourth tab
   tab_four,
-  
+
   # fifth tab
   tab_five
 ))
-
