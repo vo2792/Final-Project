@@ -1,23 +1,26 @@
+# Load in food menu dataset
 foods <- read.csv(con <- file("data/starbucks-menu-nutrition-food.csv",
   encoding = "UCS-2LE"
 ),
 stringsAsFactors = F
 )
 
+# Assign better column names
 colnames(foods) <- c("Food", "Calories", "Fat", "Carb", "Fiber", "Protein")
 item <- foods$Food
 
+# Sixth introductory section
 intro6 <-
   "<h4>
-  You may want not only to drink coffee or something but also
-  grab some food in Starbucks. However, most people do not know how much a
-  particular nutrition is included in Starbucks foods
-  and which food is better or worse compared with another
-  food in terms of a specific ingredients.
-  Our comparison tool is for those who want to know that.
-  Only you have to do is select 2 menus from the list
-  and check the nutrition you are interested in. When you
-  have two foods that you want to try and can not make up your mind which
-  to buy, this comparison tool definitely helps you know which food
-  you should order for your health.
+  You may not want to only to drink coffee or some other beverage, but also
+  grab some food in Starbucks. However, most people do not know what 
+  nutritional components are included in Starbucks foods. If you'd like to know
+  which food option is better or worse compared with another option,
+  we can help you out. Our <font color=#00b33c>food comparison tool</font> is 
+  for those who want <em>quick</em> and <em>easy</em> access to that 
+  information. All you have to do is <font color=#00b33c>select 2</font> menu 
+  items from the list and <font color=#00b33c>filter</font> for the information 
+  that you are interested in. If your situation is that you have two food items 
+  that you want to try, but can not make up your mind on which is the better 
+  option for your diet, this comparison tool will definitely be helpful.
   </h4>"

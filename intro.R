@@ -1,8 +1,11 @@
+# Load in location data
 country <- read.csv("data/directory.csv", stringsAsFactors = F)
 
+# Calculate total number of starbucks stores in dataset
 totalnum <- country %>%
   nrow()
 
+# First introductory section
 intro1 <-
   "<h4>
   We've pulled together data from multiple Starbucks datasets in order
@@ -21,6 +24,7 @@ intro1 <-
   of Starbucks.
   </h4>"
 
+# Second introductory section
 #### Unable to break line because url hyperlink will not work ####
 intro2 <- paste0(
   "<h4>
@@ -52,6 +56,7 @@ intro2 <- paste0(
   </h4>"
 )
 
+# Third introductory section
 intro3 <-
   "<h4>
   <font color=#009933>Curious about the distributions of Starbucks
@@ -70,6 +75,7 @@ intro3 <-
   to your interest.
   </h4>"
 
+# Fourth introductory section
 intro4 <-
   "<h4>
   We've implemented tables of the <font color=#009933>entire food
@@ -92,25 +98,26 @@ intro4 <-
   and plots are what will ultimately save you, the consumer, time.
   </h4>"
 
+# Fifth introductory section
 intro5 <-
   "<h4>
   Knowing how much caffeine you consume is important. There are
   many negative side effects for consuming too much caffeine, and
-  some of the side effects are fast blood pressure,
-  anxiety, addiction, death and more. This is why we provided
-  a caffeine information page for Starbucks consumers.
+  some side effects are <font color=#00b33c>fast blood pressure,
+  anxiety, and addiction</font>. This is why we provided
+  a caffeine informational page for Starbucks consumers.
   We care about people's health and well being. Starbucks labels
   their caffeine in milligrams, however, most people do not know
   how much that is. This is why we displayed the caffeine in amounts
-  of expresso shots. Consumers have a better understanding of the side
-  affects of a single shot than 64 milligrams of caffeine. It will
-  allow consumers to choose their drinks based on the amount of caffeine
-  in each drink such as selecting drinks that best fit
-  the situation they are in. If the consumer is going to sleep
-  soon, they can choose drinks with low or no caffeine. If
-  they are running low on sleep and is just getting their day
-  started, they can choose the drinks with higher caffeine.
-  Some of the starbucks drinks do not have a set amount of
-  caffeine listed because it varies, but it is still
-  worth knowing if a drink has caffeine or not.
+  of <font color=#00b33c>expresso shots</font>. Consumers can have a better 
+  understanding of the side affects of a single shot than 64 milligrams of 
+  caffeine. It will allow consumers to choose their drinks based on the 
+  amount of caffeine in each drink such as selecting drinks that best fit
+  the situation they are in. If the consumer is working on an assignment during
+  the evening and needs a small boost that won't keep them up all night, they 
+  can choose drinks with low or no caffeine. If they are running low on sleep 
+  and is just getting their day started, they can choose the drinks with 
+  higher caffeine. Although some of the starbucks drinks have an undetermined 
+  amount of caffeine (varies), it is still worth knowing the amount of caffeine
+  a specific drink contains.
   </h4>"
