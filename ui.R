@@ -15,6 +15,7 @@ intro <- tabPanel(
 
   class = "layer",
   fluidPage(
+    HTML("<img src = starbucks-copy.png>"),
     HTML("<h1>The Starbucks Project</h1>"),
     HTML("<h2><font color=#036635>Welcome to our Site!</font></h2>"),
     HTML(intro1),

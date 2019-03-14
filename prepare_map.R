@@ -110,7 +110,10 @@ my_str <-
   paste0(
     "<div class=board>
          <p>
-         Starbucks is growing strong! As of 2017, it has <strong>",
+         <h3>Starbucks is growing strong!</h3>
+         </p>
+         <p>
+         As of 2017, it has <strong>",
     totalnum, "</strong> recorded locations worldwide, spreading across
          <strong>", num_coun, "</strong> countries. For the sake of tidiness,
          <br>
