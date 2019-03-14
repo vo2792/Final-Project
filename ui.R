@@ -31,14 +31,14 @@ intro <- tabPanel(
 )
 
 # string for background (R reads the url wrongly when separated into two lines)
-#background <- "image/wood-background.jpeg"
+background <- "wood.png"
 
 # first page
 tab_one <- tabPanel(
   # tab naming
   "Map",
 
-  #setBackgroundImage(background),
+  setBackgroundImage(background),
   # title of tab
   includeCSS("styles.css"),
   headerPanel("Location in Each Country"),
