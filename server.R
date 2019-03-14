@@ -97,7 +97,8 @@ shinyServer(function(input, output) {
     ggplot(data = filtered_data) +
       geom_col(mapping = aes(
         x = Beverage, y = num_expresso_shot,
-        fill = Beverage
+        fill = Beverage,
+        width = 0.4
       )) +
       labs(
         # plot title
